@@ -1,0 +1,20 @@
+.user-controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border: solid 1px #8b8a8a6e;
+  margin: 10px 0;
+}
+
+.favourite-button,
+.share-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 20%;
+  margin: 10px 0;
+}
+
+.share-button {
+  width: 20%;
+}

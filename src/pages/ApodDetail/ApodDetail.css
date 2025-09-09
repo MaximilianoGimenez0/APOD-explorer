@@ -1,0 +1,70 @@
+:root {
+  --color-lilac: #bd97cb;
+  --color-purple: #5e376d;
+  --color-cream: #f3edd2;
+  --color-pewter: #747080;
+  --color-orange: #f4541c;
+}
+
+.detail-container {
+  min-height: 100%;
+  min-width: 100%;
+  background-color: var(--color-cream);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.apod-title {
+  font-size: 2rem;
+  margin: 10px 0;
+}
+
+.apod-media-type,
+.apod-url,
+.apod-hdurl,
+.apod-thumbnail {
+  font-size: 1rem;
+  color: #555;
+  margin: 0;
+}
+
+.apod-url a,
+.apod-hdurl a,
+.apod-thumbnail a {
+  color: #1e90ff;
+  text-decoration: none;
+}
+
+.apod-url a:hover,
+.apod-hdurl a:hover,
+.apod-thumbnail a:hover {
+  text-decoration: underline;
+}
+
+.apod-media {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.apod-image,
+.apod-video {
+  width: 80%;
+  min-height: 400px;
+  max-height: 30rem;
+  border-radius: 10px;
+  object-fit: contain;
+  margin-top: 10px;
+}
+
+.apod-date {
+  margin-left: 50px;
+}
+
+.apod-explanation {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #333;
+  margin: 0px 50px;
+}

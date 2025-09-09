@@ -1,0 +1,46 @@
+.filters-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.random-search {
+  display: flex;
+  align-items: center;
+
+  flex-direction: column;
+  width: 100%;
+}
+
+.range-search {
+  display: flex;
+  align-items: center;
+
+  flex-direction: column;
+  width: 100%;
+}
+
+.input-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  margin-bottom: 2rem;
+}
+
+.search-button {
+  width: 7rem;
+  height: 3rem;
+}
+
+.filter-label {
+  text-align: center;
+  font-size: large;
+  font-weight: bold;
+
+  width: 6rem;
+}
+
+.separador {
+  width: 90%;
+  margin-top: 15px;
+}
