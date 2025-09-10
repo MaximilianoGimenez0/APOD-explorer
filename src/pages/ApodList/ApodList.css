@@ -26,7 +26,8 @@ body {
 }
 
 .filters {
-  width: 15%;
+  width: 20%;
+  max-width: 250px;
   background-color: var(--color-lilac);
 }
 
@@ -118,4 +119,20 @@ body {
 
 .custom-button:active {
   background-color: #b83a11;
+}
+
+/* Tablets (768px a 1024px) */
+@media (max-width: 1024px) {
+  .main {
+    flex-direction: column;
+  }
+
+  .filters {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .filters-container {
+    margin: 1rem 0;
+  }
 }

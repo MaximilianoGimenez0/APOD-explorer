@@ -20,49 +20,70 @@
 }
 
 .favourites {
-  display: flex;
-  padding: 20px;
+  width: 20%;
   cursor: pointer;
-
   font-family: "Noto Serif", serif;
-  font-weight: 100;
   font-size: 1rem;
   letter-spacing: 0.1rem;
   color: var(--color-cream);
 }
 
-.language {
+.logo {
+  width: 20%;
+}
+
+.nav-link-container {
   display: flex;
+  flex-direction: row;
+
+  width: 60%;
   align-items: center;
-  padding: 20px;
-  cursor: pointer;
-  font-family: "Noto Serif", serif;
-  font-weight: 100;
-  font-size: 1rem;
-  letter-spacing: 0.1rem;
-  color: var(--color-cream);
 }
 
-.logo,
+.nav-link {
+  cursor: pointer;
+  font-family: "Noto Serif", serif;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.2rem;
+  color: var(--color-orange);
+  text-shadow: 1px 2px rgba(0, 0, 0, 0.322);
+  margin-right: 30px;
+}
+
+.nav-link:hover,
+.logo:hover {
+  color: #ffc086;
+}
+
+.favourites:hover {
+  color: rgb(169, 218, 218);
+}
+
+.logo {
+  min-width: 300px;
+  cursor: pointer;
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 1px 2px rgba(0, 0, 0, 0.322);
+  margin-right: 50px;
+}
+
 .favourites {
   min-width: 200px;
-
+  cursor: pointer;
   display: flex;
-  padding: 0 50px;
   flex: 0 0 auto;
   justify-content: center;
   align-items: center;
   text-shadow: 1px 2px rgba(0, 0, 0, 0.322);
 }
 
-.brand-name {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
+.logo {
   font-family: "Noto Serif", serif;
-  font-weight: 100;
-  font-size: 1.5rem;
+  font-size: 0.9rem;
   letter-spacing: 0.5rem;
   color: var(--color-orange);
   text-shadow: 1px 2px rgba(0, 0, 0, 0.322);
@@ -71,5 +92,65 @@
 .brand-logo {
   height: 80px;
   width: 80px;
-  cursor: pointer;
+}
+
+/* Tablets (768px a 1024px) */
+@media (max-width: 1024px) {
+  .logo {
+    font-size: 0.8rem;
+    width: 40%;
+  }
+
+  .brand-logo {
+    height: 50px;
+    width: 50px;
+  }
+
+  .nav-link-container {
+    gap: 15px;
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+  }
+
+  .favourites {
+    font-size: 0.9rem;
+  }
+}
+
+/* Móviles (menos de 768px) */
+@media (max-width: 767px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: auto;
+    padding: 10px;
+  }
+
+  .logo {
+    font-size: 0.85rem;
+    width: 100%;
+  }
+
+  .brand-logo {
+    height: 40px;
+    width: 40px;
+  }
+
+  .nav-link-container {
+    width: 100%;
+    justify-content: space-around;
+    margin: 10px 0;
+  }
+
+  .nav-link {
+    font-size: 0.85rem;
+  }
+
+  .favourites {
+    font-size: 0.85rem;
+    width: 100%;
+    margin-bottom: 5px;
+  }
 }
