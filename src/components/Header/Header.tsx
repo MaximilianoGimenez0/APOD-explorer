@@ -13,8 +13,12 @@ export default function Header() {
           <h2>DESCUBRI-2</h2>
         </div>
         <div className="nav-link-container">
-          <div className="nav-link">Home</div>
-          <div className="nav-link">Contacto</div>
+          <div className="nav-link">
+            <p className="nav-link-text">HOME</p>
+          </div>
+          <div className="nav-link">
+            <p className="nav-link-text">CONTACTO</p>
+          </div>
         </div>
         <div className="favourites" onClick={() => navigate("/favourites", {})}>
           <h2>Favoritos ⭐</h2>
