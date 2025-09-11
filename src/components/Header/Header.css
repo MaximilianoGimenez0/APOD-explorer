@@ -18,6 +18,14 @@
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.219);
 }
 
+.divisor {
+  border: none;
+  height: 2px;
+  background-color: rgba(241, 226, 209, 0.281);
+  width: 100%;
+  display: none;
+}
+
 .favourites {
   width: 20%;
   cursor: pointer;
@@ -37,6 +45,10 @@
 
   width: 60%;
   align-items: center;
+}
+
+.last-link {
+  margin-right: 0px;
 }
 
 .nav-link-text {
@@ -99,23 +111,30 @@
   .logo {
     font-size: 0.8rem;
     width: 40%;
+    margin-right: 10px;
   }
 
   .nav-link-text {
     margin-right: 0px;
+    font-size: 1rem;
   }
 
   .brand-logo {
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
   }
 
   .nav-link-container {
+    width: 60%;
     gap: 15px;
   }
 
   .nav-link {
     font-size: 0.9rem;
+  }
+
+  .divisor {
+    width: 100%;
   }
 
   .favourites {
@@ -125,6 +144,10 @@
 
 /* Móviles (menos de 768px) */
 @media (max-width: 767px) {
+  .divisor {
+    display: block;
+  }
+
   .header {
     flex-direction: column;
     align-items: flex-start;
