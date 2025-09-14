@@ -30,7 +30,7 @@ export default function Header() {
         <hr className="divisor" />
 
         <div className="favourites" onClick={() => navigate("/favourites", {})}>
-          <h2>Favoritos ⭐</h2>
+          <h2>Favoritos ♥️</h2>
         </div>
       </div>
     </>

@@ -21,14 +21,17 @@ export default () => {
       <Header></Header>
       <div className="main">
         <div className="favourites-container">
-          <h1>Apods Guardados</h1>
-          {apods.map((apod) => (
-            <FavouriteEntry
-              key={apod.date + apod.title}
-              goToApodDetails={goToApodDetails}
-              apod={apod}
-            />
-          ))}
+          <h1 className="favourites-title">Apods Guardados</h1>
+          <div className="favourites-entries">
+            {apods.map((apod) => (
+              <FavouriteEntry
+                key={apod.date + apod.title}
+                goToApodDetails={goToApodDetails}
+                apod={apod}
+                addFavourite={addFavourite}
+              />
+            ))}
+          </div>
         </div>
       </div>
       <Footer></Footer>
@@ -51,4 +54,15 @@ function readApods(): Apod[] {
   }
 
   return apods;
+}
+
+function addFavourite(apod: Apod) {
+  const apodKey = apod.date + apod.title;
+
+  if (localStorage.getItem(apodKey)) {
+    localStorage.removeItem(apodKey);
+    return;
+  }
+
+  localStorage.setItem(apodKey, JSON.stringify(apod));
 }
