@@ -28,7 +28,15 @@ body {
 .filters {
   width: 20%;
   max-width: 250px;
-  background-color: var(--color-lilac);
+  background-image: linear-gradient(
+    to right top,
+    #bd97cb,
+    #a88eb9,
+    #9584a7,
+    #837a94,
+    #747080
+  );
+  color: var(--color-cream);
 }
 
 .result-list {
@@ -99,26 +107,6 @@ body {
   .apod-grid {
     grid-template-columns: 1fr;
   }
-}
-
-.custom-button {
-  background-color: #f4541c;
-  color: #fff;
-  border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  box-shadow: 1px 3px #972a0242;
-}
-
-.custom-button:hover {
-  background-color: #d94414;
-}
-
-.custom-button:active {
-  background-color: #b83a11;
 }
 
 /* Tablets (768px a 1024px) */
