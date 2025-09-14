@@ -3,7 +3,7 @@ import "./ApodDetail.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import ApodControls from "../../components/ApodControls/ApodControls";
-import type { Apod } from "../../models/Apod";
+import { share } from "../../services/internalFunctions";
 
 export default () => {
   const location = useLocation();
@@ -44,11 +44,7 @@ export default () => {
               />
             )}{" "}
           </div>
-          <ApodControls
-            apod={apod}
-            addFavourite={addFavourite}
-            share={share}
-          ></ApodControls>
+          <ApodControls apod={apod} share={share}></ApodControls>
           <div className="apod-date">
             <p>
               <strong>Fecha:</strong> {apod.date}
@@ -63,30 +59,3 @@ export default () => {
     </>
   );
 };
-
-function addFavourite(apod: Apod) {
-  const apodKey = apod.date + apod.title;
-
-  if (localStorage.getItem(apodKey)) {
-    localStorage.removeItem(apodKey);
-    return;
-  }
-
-  localStorage.setItem(apodKey, JSON.stringify(apod));
-}
-
-function share(apod: Apod) {
-  const email = "";
-  const subject = `Mirá este APOD: ${apod.title}`;
-
-  let body = `Hola!\n\nQuería compartirte este APOD que encontré:\n\n`;
-  body += `Título: ${apod.title}\n\n`;
-  body += `Fecha: ${apod.date}\n\n`;
-  body += `Mirá la imagen/video acá: ${apod.url}\n\n`;
-
-  const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(
-    subject
-  )}&body=${encodeURIComponent(body)}`;
-
-  window.open(mailtoLink);
-}

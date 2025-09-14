@@ -1,6 +1,5 @@
 import "./Favourites.css";
 import FavouriteEntry from "../../components/FavouriteEntry/FavouriteEntry";
-
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 
@@ -28,7 +27,6 @@ export default () => {
                 key={apod.date + apod.title}
                 goToApodDetails={goToApodDetails}
                 apod={apod}
-                addFavourite={addFavourite}
               />
             ))}
           </div>
@@ -40,29 +38,8 @@ export default () => {
 };
 
 function readApods(): Apod[] {
-  const apods: Apod[] = [];
-
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    if (!key) continue;
-
-    const item = localStorage.getItem(key);
-    if (!item) continue;
-
-    const parsed: Apod = JSON.parse(item);
-    apods.push(parsed);
-  }
+  const cachedFavourites = localStorage.getItem("favourites");
+  const apods: Apod[] = cachedFavourites ? JSON.parse(cachedFavourites) : [];
 
   return apods;
-}
-
-function addFavourite(apod: Apod) {
-  const apodKey = apod.date + apod.title;
-
-  if (localStorage.getItem(apodKey)) {
-    localStorage.removeItem(apodKey);
-    return;
-  }
-
-  localStorage.setItem(apodKey, JSON.stringify(apod));
 }

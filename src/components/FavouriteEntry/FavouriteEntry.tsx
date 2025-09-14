@@ -1,17 +1,16 @@
 import type { Apod } from "../../models/Apod";
 import "./FavouriteEntry.css";
+import { addFavourite } from "../../services/internalFunctions";
 import { useState } from "react";
 
 type FavouriteEntryProps = {
   apod: Apod;
   goToApodDetails(apod: Apod): void;
-  addFavourite(apod: Apod): void;
 };
 
 export default function FavouriteEntry({
   apod,
   goToApodDetails,
-  addFavourite,
 }: FavouriteEntryProps) {
   const apodKey = apod.date + apod.title;
 
@@ -58,8 +57,17 @@ export default function FavouriteEntry({
 }
 
 function isLiked(apodKey: string) {
-  if (localStorage.getItem(apodKey)) {
+  const cached = readApods();
+  if (cached.some((a) => a.date + a.title === apodKey)) {
     return true;
+  } else {
+    return false;
   }
-  return false;
+}
+
+function readApods(): Apod[] {
+  const cachedFavourites = localStorage.getItem("favourites");
+  const apods: Apod[] = cachedFavourites ? JSON.parse(cachedFavourites) : [];
+
+  return apods;
 }

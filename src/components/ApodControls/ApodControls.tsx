@@ -1,24 +1,21 @@
 import type { Apod } from "../../models/Apod";
 import "./ApodControls.css";
+import { addFavourite } from "../../services/internalFunctions";
 import { useState } from "react";
 
 type ApodControlsProps = {
   apod: Apod;
-  addFavourite: (apod: Apod) => void;
   share: (apod: Apod) => void;
 };
 
-export default function ApodControls({
-  apod,
-  addFavourite,
-  share,
-}: ApodControlsProps) {
+export default function ApodControls({ apod, share }: ApodControlsProps) {
   const apodKey = apod.date + apod.title;
 
   const [liked, setLiked] = useState(isLiked(apodKey));
 
   const handleClick = () => {
     addFavourite(apod);
+
     setLiked(isLiked(apodKey));
   };
 
@@ -72,8 +69,17 @@ export default function ApodControls({
 }
 
 function isLiked(apodKey: string) {
-  if (localStorage.getItem(apodKey)) {
+  const cached = readApods();
+  if (cached.some((a) => a.date + a.title === apodKey)) {
     return true;
+  } else {
+    return false;
   }
-  return false;
+}
+
+function readApods(): Apod[] {
+  const cachedFavourites = localStorage.getItem("favourites");
+  const apods: Apod[] = cachedFavourites ? JSON.parse(cachedFavourites) : [];
+
+  return apods;
 }

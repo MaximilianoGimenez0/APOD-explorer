@@ -8,7 +8,7 @@ export default function Header() {
   return (
     <>
       <div className="header">
-        <div className="logo" onClick={() => navigate("/", {})}>
+        <div className="logo" onClick={() => navigate("/home", {})}>
           <img className="brand-logo" src={logo} alt="brand-logo" />
           <h2>DESCUBRI-2</h2>
         </div>
@@ -17,13 +17,25 @@ export default function Header() {
 
         <div className="nav-link-container">
           <div className="nav-link">
-            <p className="nav-link-text">HOME</p>
+            <p className="nav-link-text" onClick={() => navigate("/home", {})}>
+              HOME
+            </p>
           </div>
           <div className="nav-link">
-            <p className="nav-link-text">DESCUBRIR</p>
+            <p
+              className="nav-link-text"
+              onClick={() => navigate("/discover", {})}
+            >
+              DESCUBRIR
+            </p>
           </div>
           <div className="nav-link last-link">
-            <p className="nav-link-text">CONTACTO</p>
+            <p
+              className="nav-link-text"
+              onClick={() => navigate("/contact", {})}
+            >
+              CONTACTO
+            </p>
           </div>
         </div>
 
