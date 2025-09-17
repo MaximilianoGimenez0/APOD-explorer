@@ -32,3 +32,24 @@ export function share(apod: Apod) {
 
   window.open(mailtoLink);
 }
+
+export function addHistory(apod: Apod) {
+ const apodKey = apod.date + apod.title;
+  
+  const stored = localStorage.getItem("history");
+  let cached: Apod[] = stored ? JSON.parse(stored) : [];
+
+  const exists = cached.some(a => a.date + a.title === apodKey);
+
+  if (!exists) {
+    apod.requestedAt = new Date(Date.now());
+    cached.unshift(apod);
+  }
+
+  localStorage.setItem("history", JSON.stringify(cached));
+
+}
+
+export function cleanHistory(){
+  localStorage.removeItem('history');
+}

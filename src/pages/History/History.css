@@ -1,24 +1,15 @@
-:root {
-  --color-lilac: #bd97cb;
-  --color-purple: #5e376d;
-  --color-cream: #f3edd2;
-  --color-pewter: #747080;
-  --color-orange: #f4541c;
-}
-
 .main {
   display: block;
-  background-color: var(--color-cream);
 }
 
-.favourites-title {
+.history-title {
   margin: 0;
   text-align: center;
   font-size: xx-large;
   padding: 2rem;
 }
 
-.favourites-entries {
+.history-entries {
   margin: auto;
   padding-bottom: 30px;
   display: flex;

@@ -1,3 +1,6 @@
+/* =======================
+   Variables de colores
+   ======================= */
 :root {
   --color-lilac: #bd97cb;
   --color-purple: #5e376d;
@@ -6,6 +9,9 @@
   --color-orange: #f4541c;
 }
 
+/* =======================
+   Header principal
+   ======================= */
 .header {
   display: flex;
   flex-direction: row;
@@ -15,46 +21,82 @@
     var(--color-purple) 20%,
     var(--color-lilac) 96%
   );
+
   color: var(--color-cream);
-
   min-height: 80px;
-
   position: relative;
   z-index: 10;
-
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+  padding: 0 10px;
 }
 
+/* =======================
+   Divisor horizontal
+   ======================= */
 .divisor {
+  display: none;
   border: none;
   height: 2px;
-  background-color: rgba(243, 237, 210, 0.4);
   width: 100%;
-  display: none;
+  background-color: rgba(243, 237, 210, 0.4);
 }
 
-.favourites {
-  width: 20%;
-  cursor: pointer;
-  font-family: "Noto Serif", serif;
-  font-size: 1rem;
-  letter-spacing: 0.1rem;
-  color: var(--color-cream);
-}
-
+/* =======================
+   Logo y branding
+   ======================= */
 .logo {
-  width: 20%;
+  flex-basis: 25%;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-shadow: 1px 2px rgba(0, 0, 0, 0.3);
+  margin-right: 50px;
+  font-family: "Noto Serif", serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.5rem;
+  color: var(--color-cream);
+  transition: transform 0.2s ease, color 0.3s ease;
 }
 
+.history-favourites-container {
+  flex-basis: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 150px;
+
+  font-family: "Noto Serif", serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.2rem;
+  color: var(--color-cream);
+  text-shadow: 1px 2px rgba(0, 0, 0, 0.3);
+
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.logo:hover {
+  color: var(--color-orange);
+  transform: scale(1.03);
+}
+
+.brand-logo {
+  height: 80px;
+  width: 80px;
+}
+
+/* =======================
+   Navegación
+   ======================= */
 .nav-link-container {
+  flex-basis: 50%;
   display: flex;
   flex-direction: row;
   width: 60%;
   align-items: center;
-}
-
-.last-link {
-  margin-right: 0px;
+  gap: 30px;
 }
 
 .nav-link-text {
@@ -65,51 +107,56 @@
   letter-spacing: 0.2rem;
   color: var(--color-cream);
   text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
-  margin-right: 30px;
   transition: transform 0.2s ease, color 0.3s ease;
 }
 
-.nav-link-text:hover,
-.logo:hover {
+.nav-link-text:hover {
   color: var(--color-orange);
   transform: scale(1.03);
+}
+
+/* =======================
+   Favourites y history
+   ======================= */
+.favourites {
+  min-width: 150px;
+  flex: 0 0 auto;
+  cursor: pointer;
+  font-family: "Noto Serif", serif;
+  font-size: 1rem;
+  letter-spacing: 0.1rem;
+  color: var(--color-cream);
+  text-shadow: 1px 2px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, color 0.3s ease;
 }
 
 .favourites:hover {
   color: var(--color-orange);
 }
 
-.logo {
-  min-width: 300px;
-  cursor: pointer;
-  display: flex;
-  flex: 0 0 auto;
-  justify-content: center;
-  align-items: center;
-  text-shadow: 1px 2px rgba(0, 0, 0, 0.3);
+.history-icon {
   margin-right: 50px;
-  transition: transform 0.2s ease, color 0.3s ease;
-  font-family: "Noto Serif", serif;
-  font-size: 0.9rem;
-  letter-spacing: 0.5rem;
-  color: var(--color-cream);
-}
-
-.favourites {
-  min-width: 150px;
   cursor: pointer;
+  font-family: "Noto Serif", serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.2rem;
+  color: var(--color-cream);
+  text-shadow: 1px 2px rgba(0, 0, 0, 0.3);
   display: flex;
-  flex: 0 0 auto;
   justify-content: center;
   align-items: center;
-  text-shadow: 1px 2px rgba(0, 0, 0, 0.3);
   transition: transform 0.2s ease, color 0.3s ease;
 }
 
-.brand-logo {
-  height: 80px;
-  width: 80px;
+.history-icon:hover {
+  color: var(--color-orange);
+  transform: scale(1.03);
 }
+
+/* =======================
+   Media Queries
+   ======================= */
 
 /* Tablets (768px a 1024px) */
 @media (max-width: 1024px) {
@@ -120,7 +167,7 @@
   }
 
   .nav-link-text {
-    margin-right: 0px;
+    margin-right: 0;
     font-size: 1rem;
   }
 
@@ -134,16 +181,19 @@
     gap: 15px;
   }
 
-  .nav-link {
-    font-size: 0.9rem;
-  }
-
-  .divisor {
-    width: 100%;
-  }
-
   .favourites {
     font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 960px) {
+  .header {
+    flex-wrap: wrap;
+  }
+
+  .history-favourites-container {
+    flex-basis: 100%;
+    margin: 10px 20px 20px 0;
   }
 }
 
@@ -153,36 +203,25 @@
     display: block;
   }
 
-  .header {
-    flex-direction: column;
-    align-items: flex-start;
-    min-height: auto;
-    padding: 10px;
-  }
-
   .logo {
+    flex-basis: 100%;
     font-size: 0.85rem;
     width: 100%;
+    margin-right: 0;
+  }
+
+  .nav-link-container {
+    flex-basis: 100%;
+    width: 100%;
+    justify-content: space-around;
+    margin: 5px 0;
   }
 
   .brand-logo {
     height: 40px;
     width: 40px;
   }
-
-  .nav-link-container {
-    width: 100%;
-    justify-content: space-around;
-    margin: 10px 0;
-  }
-
   .nav-link {
     font-size: 0.85rem;
-  }
-
-  .favourites {
-    font-size: 0.85rem;
-    width: 100%;
-    margin-bottom: 5px;
   }
 }

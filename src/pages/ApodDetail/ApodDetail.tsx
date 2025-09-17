@@ -1,14 +1,19 @@
 import { useLocation } from "react-router";
+import { useEffect } from "react";
+import { share, addHistory } from "../../services/internalFunctions";
 import "./ApodDetail.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import ApodControls from "../../components/ApodControls/ApodControls";
-import { share } from "../../services/internalFunctions";
 
 export default () => {
   const location = useLocation();
   const apod = location.state;
   console.log(apod);
+
+  useEffect(() => {
+    addHistory(apod);
+  }, []);
 
   return (
     <>

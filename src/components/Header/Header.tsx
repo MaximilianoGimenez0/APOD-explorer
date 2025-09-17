@@ -1,6 +1,7 @@
 import "./Header.css";
 import logo from "../../assets/logo.png";
 import { useNavigate } from "react-router";
+import { FaHistory } from "react-icons/fa";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ export default function Header() {
               DESCUBRIR
             </p>
           </div>
-          <div className="nav-link last-link">
+          <div className="nav-link">
             <p
               className="nav-link-text"
               onClick={() => navigate("/contact", {})}
@@ -41,8 +42,19 @@ export default function Header() {
 
         <hr className="divisor" />
 
-        <div className="favourites" onClick={() => navigate("/favourites", {})}>
-          <h2>Favoritos ♥️</h2>
+        <div className="history-favourites-container">
+          <div
+            className="history-icon"
+            onClick={() => navigate("/history", {})}
+          >
+            <FaHistory></FaHistory>
+          </div>
+          <div
+            className="favourites"
+            onClick={() => navigate("/favourites", {})}
+          >
+            <h2>Favoritos</h2>
+          </div>
         </div>
       </div>
     </>

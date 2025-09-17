@@ -3,6 +3,7 @@
   border-radius: 1rem;
   overflow: hidden;
   border: none;
+  background-color: rgba(236, 222, 247, 0.438);
 }
 
 .card:hover {
@@ -18,7 +19,6 @@
 
 .card-body {
   padding: 1rem;
-  background-color: #f8f9fa;
 }
 
 .card-title {
@@ -27,8 +27,8 @@
 }
 
 .card-text {
-  font-size: 0.9rem;
-  color: #444;
+  font-size: 1rem;
+  color: #252525;
   max-height: 350px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -40,6 +40,10 @@
 
 .text-muted {
   font-size: 0.8rem;
+}
+
+.btn {
+  cursor: pointer;
 }
 
 .spinner {

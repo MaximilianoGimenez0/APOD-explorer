@@ -29,36 +29,38 @@ export default function () {
   return (
     <>
       <Header></Header>
-      <div className="main">
-        <div className="filters">
-          <Filters
-            onRandom={fetchRandomImages}
-            onFiltered={fetchFilteredImages}
-          ></Filters>
-        </div>
-        <div className="result-list">
-          <div className="apod-container">
-            <h2 className="apod-title">Imágenes del espacio 🚀</h2>
-            <hr />
-            {loading ? (
-              <div
-                className="apod-spinner"
-                role="status"
-                aria-label="Cargando imágenes"
-              ></div>
-            ) : (
-              <div className="apod-grid">
-                {images.map((apod) => (
-                  <div
-                    onClick={() => goToApodDetail(apod)}
-                    className="apod-card-wrapper"
-                    key={apod.date + apod.title}
-                  >
-                    <ApodCard apod={apod} />
-                  </div>
-                ))}
-              </div>
-            )}
+      <div>
+        <div className="discover-container">
+          <div className="filters">
+            <Filters
+              onRandom={fetchRandomImages}
+              onFiltered={fetchFilteredImages}
+            ></Filters>
+          </div>
+          <div className="result-list">
+            <div className="apod-container">
+              <h2 className="apod-title">Imágenes del espacio 🚀</h2>
+              <hr />
+              {loading ? (
+                <div
+                  className="apod-spinner"
+                  role="status"
+                  aria-label="Cargando imágenes"
+                ></div>
+              ) : (
+                <div className="apod-grid">
+                  {images.map((apod) => (
+                    <div
+                      onClick={() => goToApodDetail(apod)}
+                      className="apod-card-wrapper"
+                      key={apod.date + apod.title}
+                    >
+                      <ApodCard apod={apod} />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

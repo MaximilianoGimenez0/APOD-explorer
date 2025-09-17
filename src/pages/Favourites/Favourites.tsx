@@ -19,17 +19,16 @@ export default () => {
     <>
       <Header></Header>
       <div className="main">
-        <div className="favourites-container">
-          <h1 className="favourites-title">Apods Guardados</h1>
-          <div className="favourites-entries">
-            {apods.map((apod) => (
-              <FavouriteEntry
-                key={apod.date + apod.title}
-                goToApodDetails={goToApodDetails}
-                apod={apod}
-              />
-            ))}
-          </div>
+        <h1 className="favourites-title">Apods Guardados</h1>
+
+        <div className="favourites-entries">
+          {apods.map((apod) => (
+            <FavouriteEntry
+              key={apod.date + apod.title}
+              goToApodDetails={goToApodDetails}
+              apod={apod}
+            />
+          ))}
         </div>
       </div>
       <Footer></Footer>

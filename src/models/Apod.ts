@@ -6,4 +6,5 @@ export interface Apod {
   date: string;
   media_type: "image" | "video";
   thumbnail_url?: string;
+  requestedAt?: Date
 }

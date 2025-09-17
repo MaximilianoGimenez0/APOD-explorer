@@ -1,10 +1,11 @@
+.map-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-export default function () {
-  return (
-    <>
-      
-      <div className="main"></div>
-      <Footer></Footer>
-    </>
-  );
+#map {
+  height: 500px;
+  width: 70%;
 }

@@ -33,7 +33,7 @@ export default function FavouriteEntry({
         </div>
         <div className="like-container">
           <button
-            className={`control-button ${
+            className={` control-button ${
               liked ? "heart-liked" : "heart-unliked"
             }`}
             id="likeBtn"

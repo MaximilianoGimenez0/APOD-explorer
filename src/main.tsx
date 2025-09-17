@@ -6,6 +6,7 @@ import Favourites from "./pages/Favourites/Favourites";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import Home from "./pages/Home/Home";
 import Contact from "./pages/Contact/Contact";
+import History from "./pages/History/History";
 const root = document.getElementById("root");
 
 createRoot(root!).render(
@@ -18,6 +19,7 @@ createRoot(root!).render(
       <Route path="/detail" element={<ApodDetail />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/favourites" element={<Favourites />} />
+      <Route path="/history" element={<History />}></Route>
     </Routes>
   </HashRouter>
 );
