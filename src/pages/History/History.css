@@ -18,3 +18,34 @@
   gap: 30px;
   justify-content: center;
 }
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title-controls {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clear-history-button {
+  background: linear-gradient(135deg, var(--color-pewter), var(--color-purple));
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s ease;
+}
+
+.clear-history-button:hover {
+  background: linear-gradient(135deg, var(--color-pewter), rgb(252, 105, 105));
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}

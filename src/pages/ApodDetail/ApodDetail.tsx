@@ -1,5 +1,5 @@
 import { useLocation } from "react-router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { share, addHistory } from "../../services/internalFunctions";
 import "./ApodDetail.css";
 import Header from "../../components/Header/Header";
@@ -9,15 +9,15 @@ import ApodControls from "../../components/ApodControls/ApodControls";
 export default () => {
   const location = useLocation();
   const apod = location.state;
-  console.log(apod);
+  const [loadingImage, setLoadingImage] = useState(true);
 
   useEffect(() => {
     addHistory(apod);
-  }, []);
+  }, [apod]);
 
   return (
     <>
-      <Header></Header>
+      <Header />
       <div className="main">
         <div className="detail-container">
           <div className="apod-media">
@@ -34,12 +34,18 @@ export default () => {
                 </a>
               </p>
             )}
+
             {apod.media_type === "image" ? (
-              <img
-                src={apod.hdurl || apod.url}
-                alt={apod.title}
-                className="apod-image"
-              />
+              <div className="image-wrapper">
+                {loadingImage && <div className="loader"></div>}
+                <img
+                  src={apod.hdurl || apod.url}
+                  alt={apod.title}
+                  className="apod-image"
+                  style={{ display: loadingImage ? "none" : "block" }}
+                  onLoad={() => setLoadingImage(false)}
+                />
+              </div>
             ) : (
               <iframe
                 src={apod.url}
@@ -47,9 +53,10 @@ export default () => {
                 className="apod-video"
                 allowFullScreen
               />
-            )}{" "}
+            )}
           </div>
-          <ApodControls apod={apod} share={share}></ApodControls>
+
+          <ApodControls apod={apod} share={share} />
           <div className="apod-date">
             <p>
               <strong>Fecha:</strong> {apod.date}
@@ -60,7 +67,7 @@ export default () => {
           </div>
         </div>
       </div>
-      <Footer></Footer>
+      <Footer />
     </>
   );
 };
