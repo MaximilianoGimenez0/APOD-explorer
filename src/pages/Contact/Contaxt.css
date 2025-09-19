@@ -136,6 +136,7 @@
   .survey-container {
     height: 100%;
     margin-bottom: 2rem;
+    padding: 0 15px 15px 15px;
   }
 
   .contact-description-container {

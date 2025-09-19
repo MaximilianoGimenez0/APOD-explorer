@@ -1,5 +1,5 @@
 import "./SurveyForm.css";
-
+import emailjs from "emailjs-com";
 import { useState } from "react";
 
 type FormData = {
@@ -15,6 +15,8 @@ type FormData = {
 type Errors = Partial<Record<keyof FormData, string>>;
 
 export default function SurveyForm() {
+  const [loading, setLoading] = useState(false);
+
   const [showModal, setShowModal] = useState(false);
 
   const [formData, setFormData] = useState<FormData>({
@@ -78,13 +80,38 @@ export default function SurveyForm() {
       return;
     }
 
-    console.log("Datos enviados:", formData);
-    setShowModal(true); // mostramos el modal
+    setLoading(true);
+    emailjs
+      .send(
+        "service_16tpw2s", // service-id
+        "template_vf3fd43", // template-id
+        formData, // data
+        "3UIwFZOLxocMHn5vR" // public key
+      )
+      .then(
+        (response) => {
+          console.log("SUCCESS!", response.status, response.text);
+          setLoading(false);
+          setShowModal(true);
+        },
+        (err) => {
+          console.error("FAILED...", err);
+          setLoading(false);
+          alert("Error al enviar el correo.");
+        }
+      );
   }
 
   return (
     <>
       <div>
+        {loading && (
+          <div className="loader-backdrop">
+            <div className="loader"></div>
+            <p>Enviando...</p>
+          </div>
+        )}
+
         <p className="survey-title">Encuesta</p>
 
         <form className="survey-form" onSubmit={handleSubmit}>
