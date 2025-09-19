@@ -26,7 +26,7 @@ export default function History() {
       <Header />
       <main className="main">
         <div className="title-controls">
-          <h1 className="history-title">Visitados anteriormente</h1>
+          <h1 className="history-title">Apods Visitados</h1>
           <button className="clear-history-button" onClick={handleClearHistory}>
             Borrar historial
           </button>

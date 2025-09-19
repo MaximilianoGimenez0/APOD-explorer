@@ -49,3 +49,36 @@
   transform: translateY(-1px);
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
 }
+
+@media (max-width: 540px) {
+  .title-controls {
+    padding: 10px 0;
+  }
+
+  .history-title {
+    margin: 0;
+
+    text-align: center;
+    font-size: x-large;
+    padding: 1rem 0;
+  }
+
+  .clear-history-button {
+    padding: 0.5rem;
+    margin-left: 15px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .title-controls {
+    padding: 10px 0;
+  }
+
+  .history-title {
+    margin: 0;
+    text-align: center;
+    font-size: larger;
+    padding: 1rem 0;
+  }
+}
