@@ -3,7 +3,8 @@
   border-radius: 1rem;
   overflow: hidden;
   border: none;
-  background-color: rgba(236, 222, 247, 0.438);
+  height: 100%;
+  background-color: white;
 }
 
 .card:hover {
