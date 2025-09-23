@@ -30,9 +30,6 @@
   padding: 0 10px;
 }
 
-/* =======================
-   Divisor horizontal
-   ======================= */
 .divisor {
   display: none;
   border: none;
@@ -41,9 +38,6 @@
   background-color: rgba(243, 237, 210, 0.4);
 }
 
-/* =======================
-   Logo y branding
-   ======================= */
 .logo {
   flex-basis: 25%;
   min-width: 300px;
@@ -87,9 +81,6 @@
   width: 80px;
 }
 
-/* =======================
-   Navegación
-   ======================= */
 .nav-link-container {
   flex-basis: 50%;
   display: flex;
@@ -115,9 +106,6 @@
   transform: scale(1.03);
 }
 
-/* =======================
-   Favourites y history
-   ======================= */
 .favourites {
   min-width: 150px;
   flex: 0 0 auto;
@@ -154,11 +142,6 @@
   transform: scale(1.03);
 }
 
-/* =======================
-   Media Queries
-   ======================= */
-
-/* Tablets (768px a 1024px) */
 @media (max-width: 1024px) {
   .logo {
     font-size: 0.8rem;
@@ -197,7 +180,6 @@
   }
 }
 
-/* Móviles (menos de 768px) */
 @media (max-width: 767px) {
   .divisor {
     display: block;

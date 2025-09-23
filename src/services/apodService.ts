@@ -1,6 +1,7 @@
 import type { Apod } from "../models/Apod";
 import { API_URL,API_KEY } from "./constats";
 
+//Traer apods con un rango de fechas
 export async function getFilteredApodImages(
   year: number = 2024,
   month: number = 12
@@ -35,7 +36,8 @@ export async function getFilteredApodImages(
   return Array.isArray(data) ? data : [data];
 }
 
-export async function getRandomApodImages(count: number = 6): Promise<Apod[]> {
+//Traer 6 apods random
+export async function getRandomApodImages(count: number = 12): Promise<Apod[]> {
   const response = await fetch(`${API_URL}?count=${count}&api_key=${API_KEY}`);
   if (!response.ok) {
     throw new Error("Error al cargar imágenes de la NASA");

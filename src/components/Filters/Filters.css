@@ -38,7 +38,6 @@
   outline: none;
 }
 
-/* Estilo del "thumb" */
 .filter-input::-webkit-slider-thumb {
   appearance: none;
   width: 20px;

@@ -9,7 +9,8 @@ import ApodControls from "../../components/ApodControls/ApodControls";
 export default () => {
   const location = useLocation();
   const apod = location.state;
-  const [loadingImage, setLoadingImage] = useState(true);
+
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     addHistory(apod);
@@ -37,13 +38,13 @@ export default () => {
 
             {apod.media_type === "image" ? (
               <div className="image-wrapper">
-                {loadingImage && <div className="loader"></div>}
+                {loading && <div className="inline-loader"></div>}
                 <img
                   src={apod.hdurl || apod.url}
                   alt={apod.title}
-                  className="apod-image"
-                  style={{ display: loadingImage ? "none" : "block" }}
-                  onLoad={() => setLoadingImage(false)}
+                  className={`apod-image ${loading ? "hidden" : ""}`}
+                  onLoad={() => setLoading(false)}
+                  onError={() => setLoading(false)}
                 />
               </div>
             ) : (

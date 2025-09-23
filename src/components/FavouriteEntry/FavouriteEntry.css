@@ -1,4 +1,3 @@
-/* ===== Card general ===== */
 .favourite-entry {
   width: 350px;
   height: 340px;
@@ -24,7 +23,6 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* ===== Imagen ===== */
 .favourite-img {
   width: 90%;
   height: 150px;
@@ -33,7 +31,6 @@
   object-fit: cover;
 }
 
-/* ===== Info ===== */
 .favourite-info {
   width: 90%;
   height: 85px;
@@ -53,14 +50,12 @@
   color: #222;
 }
 
-/* ===== Última visita ===== */
 .last-visited {
   width: 90%;
   margin-top: 20px;
   text-align: start;
 }
 
-/* ===== Like (corazón) ===== */
 .like-container {
   width: 100%;
   margin-top: 10px;

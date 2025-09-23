@@ -52,16 +52,31 @@ export default function SurveyForm() {
     } else if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/.test(formData.nombre)) {
       newErrors.nombre = "Solo debe contener letras.";
     }
+
     if (!formData.apellido.trim()) {
       newErrors.apellido = "El apellido es obligatorio.";
     } else if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/.test(formData.apellido)) {
       newErrors.apellido = "Solo debe contener letras.";
     }
-    if (!formData.fechaNacimiento)
+
+    if (!formData.fechaNacimiento) {
       newErrors.fechaNacimiento = "Seleccione su fecha de nacimiento.";
-    if (!formData.sexo) newErrors.sexo = "Seleccione una opción.";
-    if (!formData.valoracion)
+    } else {
+      const min = new Date("1900-01-01");
+      const selectedDate = new Date(formData.fechaNacimiento);
+      if (selectedDate < min) {
+        newErrors.fechaNacimiento = "Seleccione una fecha válida.";
+      }
+    }
+
+    if (!formData.sexo) {
+      newErrors.sexo = "Seleccione una opción.";
+    }
+
+    if (!formData.valoracion) {
       newErrors.valoracion = "Seleccione una valoración.";
+    }
+
     if (!formData.email.trim()) {
       newErrors.email = "El email es obligatorio.";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
@@ -93,6 +108,18 @@ export default function SurveyForm() {
           console.log("SUCCESS!", response.status, response.text);
           setLoading(false);
           setShowModal(true);
+
+          setFormData({
+            nombre: "",
+            apellido: "",
+            fechaNacimiento: "",
+            sexo: "",
+            valoracion: "",
+            email: "",
+            comentario: "",
+          });
+
+          setErrors({});
         },
         (err) => {
           console.error("FAILED...", err);
@@ -107,7 +134,7 @@ export default function SurveyForm() {
       <div>
         {loading && (
           <div className="loader-backdrop">
-            <div className="loader"></div>
+            <div className="apod-spinner"></div>
             <p>Enviando...</p>
           </div>
         )}
