@@ -1,0 +1,62 @@
+:root {
+  --color-lilac: #bd97cb;
+  --color-purple: #5e376d;
+  --color-cream: #f3edd2;
+  --color-pewter: #747080;
+  --color-orange: #f4541c;
+}
+
+.history-entry {
+  width: 350px;
+  height: 340px;
+  background: rgba(246, 240, 250, 0.363);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.history-entry:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.history-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.history-img {
+  border-radius: 5%;
+  margin-top: 10px;
+  width: 90%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.last-visited {
+  width: 90%;
+  text-align: start;
+  margin-top: 20px;
+}
+
+.history-info {
+  height: 85px;
+  width: 90%;
+  padding: 1rem;
+  text-align: start;
+}
+
+.history-data {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.history-data:first-child {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #222;
+}

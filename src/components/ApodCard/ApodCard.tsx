@@ -1,12 +1,9 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import type { Apod } from "../../models/Apod";
 import "./ApodCard.css";
 
 export default function ApodCard({ apod }: { apod: Apod }) {
-  const [showFullText, setShowFullText] = useState(false);
   const imageRef = useRef<HTMLImageElement>(null);
-
-  const toggleText = () => setShowFullText((prev) => !prev);
 
   const previewText =
     apod.explanation.length > 150
@@ -30,17 +27,9 @@ export default function ApodCard({ apod }: { apod: Apod }) {
       )}
       <div className="card-body">
         <h5 className="card-title">{apod.title}</h5>
-        <p className="card-text small">
-          {showFullText ? apod.explanation : previewText}
-        </p>
+        <p className="card-text small">{previewText}</p>
         {apod.explanation.length > 150 && (
-          <button
-            className="btn btn-link p-0"
-            onClick={toggleText}
-            aria-expanded={showFullText}
-          >
-            {showFullText ? "Ver menos" : "Ver más"}
-          </button>
+          <button className="btn btn-link p-0">Ver más</button>
         )}
         <p className="text-muted small">📅 {apod.date}</p>
       </div>

@@ -1,8 +1,29 @@
-.favourites-container {
-  width: 100%;
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
+:root {
+  --color-lilac: #bd97cb;
+  --color-purple: #5e376d;
+  --color-cream: #f3edd2;
+  --color-pewter: #747080;
+  --color-orange: #f4541c;
+}
+
+.main {
+  display: block;
   background-color: var(--color-cream);
-  align-items: center;
+}
+
+.favourites-title {
+  margin: 0;
+  text-align: center;
+  font-size: xx-large;
+  padding: 2rem;
+}
+
+.favourites-entries {
+  margin: auto;
+  padding-bottom: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  gap: 30px;
+  justify-content: center;
 }

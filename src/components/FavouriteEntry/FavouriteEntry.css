@@ -1,16 +1,77 @@
 .favourite-entry {
-  display: flex;
-  justify-content: center;
-  border: solid 1px rgba(0, 0, 0, 0.082);
-  font-size: larger;
-  padding: 20px;
-  margin: 30px 0px;
+  width: 350px;
+  height: 340px;
+  flex-shrink: 0;
   cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.favourite-title,
-.favourite-date {
+.favourite-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(246, 240, 250, 0.363);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.favourite-header:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.favourite-img {
+  width: 90%;
+  height: 150px;
+  margin-top: 10px;
+  border-radius: 5%;
+  object-fit: cover;
+}
+
+.favourite-info {
+  width: 90%;
+  height: 85px;
+  padding: 1rem;
+  text-align: start;
+}
+
+.favourite-data {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.favourite-data:first-child {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #222;
+}
+
+.last-visited {
+  width: 90%;
+  margin-top: 20px;
+  text-align: start;
+}
+
+.like-container {
+  width: 100%;
+  margin-top: 10px;
   display: flex;
   justify-content: center;
-  min-width: 300px;
+}
+
+.heart-liked,
+.heart-unliked {
+  font-size: 2.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.heart-liked:hover,
+.heart-unliked:hover {
+  transform: scale(1.2);
+  color: #ff4d6d;
 }

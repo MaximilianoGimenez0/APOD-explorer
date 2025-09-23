@@ -18,3 +18,30 @@
 .share-button {
   width: 20%;
 }
+
+.heart-icon {
+  width: 48px;
+  height: 48px;
+  fill: none;
+  stroke: #999;
+  stroke-width: 2;
+  transition: fill 0.3s ease, stroke 0.3s ease, transform 0.2s ease;
+}
+
+.heart-unliked .heart-icon {
+  fill: none;
+  stroke: #999;
+}
+
+.heart-liked .heart-icon {
+  fill: #e0245e;
+  stroke: #e0245e;
+  transform: scale(1.2);
+}
+
+.control-button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+}
