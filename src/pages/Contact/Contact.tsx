@@ -12,7 +12,7 @@ export default function () {
       <div className="main">
         <div className="presentation-container">
           <div className="contact-description-container">
-            <h2 className="contact-title">¿Qué es descubri-2?</h2>
+            <h2 className="contact-title">¿Qué es APOD-explorer?</h2>
             <p className="contact-text">
               Soy Maximiliano Giménez, estudiante de Ingeniería en Informática
               en la UNAJ. Esta página tiene como objetivo facilitar el

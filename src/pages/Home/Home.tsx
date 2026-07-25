@@ -12,7 +12,7 @@ export default function Home() {
             <div className="hero-text">
               <h1>Descubrí el Universo 🌌</h1>
               <p>
-                Bienvenido a <b>DESCUBRI-2</b>, tu espacio para explorar
+                Bienvenido a <b>APOD-explorer</b>, tu espacio para explorar
                 imágenes diarias del universo gracias a la API{" "}
                 <b>APOD de la NASA</b>.
               </p>

@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-content">
-        <p className="brand">DESCUBRI-2</p>
+        <p className="brand">APOD-explorer</p>
         <p className="author">Desarrollado por Maximiliano Giménez</p>
         <p className="rights">© 2025 Todos los derechos reservados</p>
 

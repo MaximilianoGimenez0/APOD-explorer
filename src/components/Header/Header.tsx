@@ -11,7 +11,7 @@ export default function Header() {
       <div className="header">
         <div className="logo" onClick={() => navigate("/home", {})}>
           <img className="brand-logo" src={logo} alt="brand-logo" />
-          <h2>DESCUBRI-2</h2>
+          <h2>APOD-explorer</h2>
         </div>
 
         <hr className="divisor" />
