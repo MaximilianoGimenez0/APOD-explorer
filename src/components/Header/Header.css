@@ -32,7 +32,7 @@
 .brand-logo {
   height: 40px;
   width: auto;
-  filter: drop-shadow(0 0 8px rgba(255,255,255,0.2));
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
 }
 
 .brand-name {
@@ -132,30 +132,73 @@
   font-size: 1rem;
 }
 
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: var(--space-xs);
+  z-index: 60;
+  transition: color var(--transition-fast);
+}
+
+.mobile-menu-btn:hover {
+  color: var(--accent-primary);
+}
+
 /* Responsive */
 @media (max-width: 900px) {
-  .nav-links {
-    display: none; /* Hide standard nav links on smaller screens, we could add a hamburger menu but for now, rely on bottom nav or hero links if needed, or just let them wrap */
+  .mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-links, .action-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    padding: var(--space-md) 0;
+  }
+
+  .nav-links.mobile-open, .action-links.mobile-open {
+    display: flex;
+  }
+
+  .header-container {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 72px;
+  }
+
+  .nav-link {
+    width: 100%;
+    justify-content: center;
+    padding: var(--space-md);
+    font-size: 1.1rem;
+  }
+
+  .action-links {
+    border-top: 1px solid var(--border-light);
+    gap: var(--space-md);
+    padding-top: var(--space-md);
+  }
+  
+  .action-btn-primary {
+    width: 100%;
+    max-width: 200px;
+    justify-content: center;
   }
 }
 
 @media (max-width: 640px) {
-  .header-container {
-    padding: var(--space-sm);
-    flex-wrap: wrap;
-    height: auto;
-    gap: var(--space-sm);
-    justify-content: center;
-  }
-  
-  .action-links {
-    width: 100%;
-    justify-content: center;
-    padding-top: var(--space-sm);
-    border-top: 1px solid var(--border-light);
-  }
-  
   .brand-name {
     font-size: 1.1rem;
+  }
+  
+  .header-container {
+    padding: var(--space-sm);
   }
 }
