@@ -1,6 +1,7 @@
 import "./SurveyForm.css";
 import emailjs from "emailjs-com";
 import { useState } from "react";
+import { useTranslation } from "../../i18n";
 
 type FormData = {
   nombre: string;
@@ -16,8 +17,8 @@ type Errors = Partial<Record<keyof FormData, string>>;
 
 export default function SurveyForm() {
   const [loading, setLoading] = useState(false);
-
   const [showModal, setShowModal] = useState(false);
+  const { t } = useTranslation();
 
   const [formData, setFormData] = useState<FormData>({
     nombre: "",
@@ -48,39 +49,39 @@ export default function SurveyForm() {
     const newErrors: Errors = {};
 
     if (!formData.nombre.trim()) {
-      newErrors.nombre = "El nombre es obligatorio.";
+      newErrors.nombre = t('components.survey.errors.nameRequired');
     } else if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/.test(formData.nombre)) {
-      newErrors.nombre = "Solo debe contener letras.";
+      newErrors.nombre = t('components.survey.errors.nameLetters');
     }
 
     if (!formData.apellido.trim()) {
-      newErrors.apellido = "El apellido es obligatorio.";
+      newErrors.apellido = t('components.survey.errors.lastNameRequired');
     } else if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/.test(formData.apellido)) {
-      newErrors.apellido = "Solo debe contener letras.";
+      newErrors.apellido = t('components.survey.errors.lastNameLetters');
     }
 
     if (!formData.fechaNacimiento) {
-      newErrors.fechaNacimiento = "Seleccione su fecha de nacimiento.";
+      newErrors.fechaNacimiento = t('components.survey.errors.birthDateRequired');
     } else {
       const min = new Date("1900-01-01");
       const selectedDate = new Date(formData.fechaNacimiento);
       if (selectedDate < min) {
-        newErrors.fechaNacimiento = "Seleccione una fecha válida.";
+        newErrors.fechaNacimiento = t('components.survey.errors.birthDateInvalid');
       }
     }
 
     if (!formData.sexo) {
-      newErrors.sexo = "Seleccione una opción.";
+      newErrors.sexo = t('components.survey.errors.genderRequired');
     }
 
     if (!formData.valoracion) {
-      newErrors.valoracion = "Seleccione una valoración.";
+      newErrors.valoracion = t('components.survey.errors.ratingRequired');
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = "El email es obligatorio.";
+      newErrors.email = t('components.survey.errors.emailRequired');
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "El email no es válido.";
+      newErrors.email = t('components.survey.errors.emailInvalid');
     }
 
     return newErrors;
@@ -124,7 +125,7 @@ export default function SurveyForm() {
         (err) => {
           console.error("FAILED...", err);
           setLoading(false);
-          alert("Error al enviar el correo.");
+          alert(t('components.survey.errors.sendError'));
         }
       );
   }
@@ -135,18 +136,18 @@ export default function SurveyForm() {
         {loading && (
           <div className="loader-backdrop">
             <div className="apod-spinner"></div>
-            <p>Enviando...</p>
+            <p>{t('components.survey.sending')}</p>
           </div>
         )}
 
-        <p className="survey-title">Encuesta</p>
+        <p className="survey-title">{t('components.survey.title')}</p>
 
         <form className="survey-form" onSubmit={handleSubmit}>
           {/* Nombre */}
           <div className="form-group name-container">
             <div className="name-input">
               <div className="input-label-error">
-                <label htmlFor="nombre">Nombre:</label>
+                <label htmlFor="nombre">{t('components.survey.name')}</label>
                 {errors.nombre && <p className={"error"}>{errors.nombre}</p>}
               </div>
               <input
@@ -160,7 +161,7 @@ export default function SurveyForm() {
             </div>
             <div className="name-input">
               <div className="input-label-error">
-                <label htmlFor="apellido">Apellido:</label>
+                <label htmlFor="apellido">{t('components.survey.lastName')}</label>
                 {errors.apellido && <p className="error">{errors.apellido}</p>}
               </div>
               <input
@@ -177,7 +178,7 @@ export default function SurveyForm() {
           {/* Fecha de Nacimiento */}
           <div className="form-group">
             <div className="input-label-error">
-              <label htmlFor="fechaNacimiento">Fecha de Nacimiento:</label>
+              <label htmlFor="fechaNacimiento">{t('components.survey.birthDate')}</label>
               {errors.fechaNacimiento && (
                 <p className="error">{errors.fechaNacimiento}</p>
               )}
@@ -194,7 +195,7 @@ export default function SurveyForm() {
           {/* Sexo */}
           <div className="form-group">
             <div className="input-label-error">
-              <label>Sexo:</label>
+              <label>{t('components.survey.gender')}</label>
               {errors.sexo && <p className="error">{errors.sexo}</p>}
             </div>
             <div>
@@ -206,7 +207,7 @@ export default function SurveyForm() {
                 checked={formData.sexo === "Masculino"}
                 onChange={handleChange}
               />
-              <label htmlFor="masculino">Masculino</label>
+              <label htmlFor="masculino">{t('components.survey.genderMale')}</label>
             </div>
             <div>
               <input
@@ -217,7 +218,7 @@ export default function SurveyForm() {
                 checked={formData.sexo === "Femenino"}
                 onChange={handleChange}
               />
-              <label htmlFor="femenino">Femenino</label>
+              <label htmlFor="femenino">{t('components.survey.genderFemale')}</label>
             </div>
             <div>
               <input
@@ -228,14 +229,14 @@ export default function SurveyForm() {
                 checked={formData.sexo === "Otro"}
                 onChange={handleChange}
               />
-              <label htmlFor="otro">Otro</label>
+              <label htmlFor="otro">{t('components.survey.genderOther')}</label>
             </div>
           </div>
 
           {/* Valoración */}
           <div className="form-group">
             <div className="input-label-error">
-              <label>¿Qué te pareció la página?</label>
+              <label>{t('components.survey.rating')}</label>
               {errors.valoracion && (
                 <p className="error">{errors.valoracion}</p>
               )}
@@ -246,21 +247,21 @@ export default function SurveyForm() {
               value={formData.valoracion}
               onChange={handleChange}
             >
-              <option value="">Seleccione una opción</option>
-              <option value="Lamentable">Lamentable</option>
-              <option value="Mala">Mala</option>
-              <option value="Podría ser mejor">Podría ser mejor</option>
+              <option value="">{t('components.survey.ratingSelect')}</option>
+              <option value="Lamentable">{t('components.survey.rating1')}</option>
+              <option value="Mala">{t('components.survey.rating2')}</option>
+              <option value="Podría ser mejor">{t('components.survey.rating3')}</option>
               <option value="Cumple con mis expectativas">
-                Cumple con mis expectativas
+                {t('components.survey.rating4')}
               </option>
-              <option value="Me encantó">Me encantó</option>
+              <option value="Me encantó">{t('components.survey.rating5')}</option>
             </select>
           </div>
 
           {/* Email */}
           <div className="form-group">
             <div className="input-label-error">
-              <label htmlFor="email">Email:</label>
+              <label htmlFor="email">{t('components.survey.email')}</label>
               {errors.email && <p className="error">{errors.email}</p>}
             </div>
             <input
@@ -275,7 +276,7 @@ export default function SurveyForm() {
 
           {/* Comentario */}
           <div className="form-group">
-            <label htmlFor="comentario">Comentario:</label>
+            <label htmlFor="comentario">{t('components.survey.comment')}</label>
             <textarea
               id="comentario"
               name="comentario"
@@ -287,7 +288,7 @@ export default function SurveyForm() {
 
           {/* Botones */}
           <div className="form-buttons">
-            <button type="submit">Enviar</button>
+            <button type="submit">{t('components.survey.submit')}</button>
             <button
               type="button"
               onClick={() => {
@@ -303,7 +304,7 @@ export default function SurveyForm() {
                 setErrors({});
               }}
             >
-              Cancelar
+              {t('components.survey.cancel')}
             </button>
           </div>
         </form>
@@ -312,8 +313,8 @@ export default function SurveyForm() {
       {showModal && (
         <div className="modal-backdrop">
           <div className="modal">
-            <p>Formulario enviado ✅</p>
-            <button onClick={() => setShowModal(false)}>Cerrar</button>
+            <p>{t('components.survey.success')}</p>
+            <button onClick={() => setShowModal(false)}>{t('components.survey.close')}</button>
           </div>
         </div>
       )}

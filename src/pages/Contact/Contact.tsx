@@ -6,16 +6,19 @@ import Map from "../../components/Map/Map";
 import "leaflet/dist/leaflet.css";
 import { FaReact, FaSpaceShuttle, FaMapMarkerAlt, FaCode } from "react-icons/fa";
 import { SiVite, SiTypescript } from "react-icons/si";
+import { useTranslation } from "../../i18n";
 
 export default function Contact() {
+  const { t } = useTranslation();
+
   return (
     <div className="about-page">
       <Header />
       <main className="about-main">
         {/* Presentation Header */}
         <section className="about-header-section">
-          <h1>Sobre el Proyecto</h1>
-          <p>Descubriendo el universo, una línea de código a la vez.</p>
+          <h1>{t('pages.about.title')}</h1>
+          <p>{t('pages.about.subtitle')}</p>
         </section>
 
         <div className="about-content-grid">
@@ -23,17 +26,11 @@ export default function Contact() {
           <section className="about-card col-span-2">
             <div className="about-card-header">
               <FaSpaceShuttle className="about-icon text-accent" />
-              <h2>¿Qué es APOD-explorer?</h2>
+              <h2>{t('pages.about.whatIs.title')}</h2>
             </div>
+            <p className="about-text" dangerouslySetInnerHTML={{ __html: t('pages.about.whatIs.p1').replace('Maximiliano Giménez', '<strong>Maximiliano Giménez</strong>').replace('Astronomy Picture of the Day (APOD)', '<em>Astronomy Picture of the Day (APOD)</em>') }} />
             <p className="about-text">
-              Soy <strong>Maximiliano Giménez</strong>, estudiante de Ingeniería en Informática en la UNAJ. 
-              Esta aplicación tiene como objetivo facilitar la exploración del universo acercando el conocimiento 
-              científico a través de la interfaz oficial <em>Astronomy Picture of the Day (APOD)</em> de la NASA.
-            </p>
-            <p className="about-text">
-              El proyecto te permite explorar un vasto archivo de imágenes y videos diarios del cosmos, 
-              con características como filtros por fecha, sistema de favoritos, historial de exploración y 
-              un diseño moderno inspirado en plataformas editoriales premium.
+              {t('pages.about.whatIs.p2')}
             </p>
           </section>
 
@@ -41,10 +38,10 @@ export default function Contact() {
           <section className="about-card col-span-1">
             <div className="about-card-header">
               <FaCode className="about-icon text-accent-secondary" />
-              <h2>Tecnología</h2>
+              <h2>{t('pages.about.tech.title')}</h2>
             </div>
             <p className="about-text mb-lg">
-              Construido con tecnologías modernas para ofrecer un rendimiento óptimo y una experiencia fluida.
+              {t('pages.about.tech.desc')}
             </p>
             <div className="tech-stack-list">
               <div className="tech-item">
@@ -66,17 +63,11 @@ export default function Contact() {
           <section className="about-card col-span-2">
             <div className="about-card-header">
               <FaMapMarkerAlt className="about-icon text-accent-tertiary" />
-              <h2>¿Dónde me podés encontrar?</h2>
+              <h2>{t('pages.about.location.title')}</h2>
             </div>
             <div className="about-map-layout">
               <div className="about-map-text">
-                <p className="about-text">
-                  En la <strong>Universidad Nacional Arturo Jauretche (UNAJ)</strong>. 
-                  Este espacio se convirtió en mi segundo hogar desde que comencé la carrera. 
-                  Es acá donde nacen muchas de mis ideas y proyectos, donde enfrento desafíos que 
-                  me impulsan a mejorar cada día, y donde me rodeo de personas que buscan crecer 
-                  y aportar al mundo de la tecnología y la ciencia.
-                </p>
+                <p className="about-text" dangerouslySetInnerHTML={{ __html: t('pages.about.location.desc').replace('Universidad Nacional Arturo Jauretche (UNAJ)', '<strong>Universidad Nacional Arturo Jauretche (UNAJ)</strong>') }} />
               </div>
               <div className="about-map-container">
                 <Map />
@@ -87,7 +78,7 @@ export default function Contact() {
           {/* Survey Form */}
           <section className="about-card col-span-1">
             <div className="about-card-header">
-              <h2>Dejá tu opinión</h2>
+              <h2>{t('pages.about.survey.title')}</h2>
             </div>
             <div className="survey-wrapper">
               <SurveyForm />

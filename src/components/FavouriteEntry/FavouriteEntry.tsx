@@ -3,6 +3,7 @@ import "./FavouriteEntry.css";
 import { addFavourite } from "../../services/internalFunctions";
 import { useState } from "react";
 import { FaHeart, FaPlay } from "react-icons/fa";
+import { useTranslation } from "../../i18n";
 
 type FavouriteEntryProps = {
   apod: Apod;
@@ -17,6 +18,7 @@ export default function FavouriteEntry({
 }: FavouriteEntryProps) {
   const apodKey = apod.date + apod.title;
   const [liked, setLiked] = useState(isLiked(apodKey));
+  const { t } = useTranslation();
 
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -42,7 +44,7 @@ export default function FavouriteEntry({
         <button 
           className={`fav-like-btn ${liked ? 'liked' : ''}`}
           onClick={handleClick}
-          aria-label={liked ? "Quitar de favoritos" : "Añadir a favoritos"}
+          aria-label={liked ? t('components.apodControls.removeFromFavs') : t('components.apodControls.addToFavs')}
         >
           <FaHeart />
         </button>

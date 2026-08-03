@@ -3,11 +3,14 @@ import logo from "../../assets/logo.png";
 import { useNavigate, useLocation } from "react-router";
 import { FaHistory, FaHeart, FaInfoCircle, FaCompass, FaBars, FaTimes } from "react-icons/fa";
 import { useState } from "react";
+import LanguageSelector from "../LanguageSelector/LanguageSelector";
+import { useTranslation } from "../../i18n";
 
 export default function Header() {
   const navigate = useNavigate();
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t } = useTranslation();
 
   const isActive = (path: string) => {
     return location.pathname === path || (path === '/home' && location.pathname === '/');
@@ -39,19 +42,19 @@ export default function Header() {
             className={`nav-link ${isActive('/home') ? 'active' : ''}`} 
             onClick={() => navigateAndClose("/home")}
           >
-            Inicio
+            {t('navbar.home')}
           </button>
           <button 
             className={`nav-link ${isActive('/discover') ? 'active' : ''}`} 
             onClick={() => navigateAndClose("/discover")}
           >
-            <FaCompass className="nav-icon" /> Descubrir
+            <FaCompass className="nav-icon" /> {t('navbar.discover')}
           </button>
           <button 
             className={`nav-link ${isActive('/contact') ? 'active' : ''}`} 
             onClick={() => navigateAndClose("/contact")}
           >
-            <FaInfoCircle className="nav-icon" /> Acerca de
+            <FaInfoCircle className="nav-icon" /> {t('navbar.about')}
           </button>
         </nav>
 
@@ -59,8 +62,8 @@ export default function Header() {
           <button 
             className={`action-btn ${isActive('/history') ? 'active' : ''}`} 
             onClick={() => navigateAndClose("/history")}
-            aria-label="Historial"
-            title="Historial"
+            aria-label={t('navbar.history')}
+            title={t('navbar.history')}
           >
             <FaHistory />
           </button>
@@ -68,8 +71,9 @@ export default function Header() {
             className={`action-btn action-btn-primary ${isActive('/favourites') ? 'active' : ''}`} 
             onClick={() => navigateAndClose("/favourites")}
           >
-            <FaHeart className="btn-icon" /> Favoritos
+            <FaHeart className="btn-icon" /> {t('navbar.favourites')}
           </button>
+          <LanguageSelector />
         </div>
       </div>
     </header>

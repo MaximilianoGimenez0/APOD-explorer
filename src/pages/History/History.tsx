@@ -7,10 +7,12 @@ import { useNavigate } from "react-router";
 import { cleanHistory } from "../../services/internalFunctions";
 import { useState } from "react";
 import { FaTrash, FaCompass, FaHistory } from "react-icons/fa";
+import { useTranslation } from "../../i18n";
 
 export default function History() {
   const [apods, setApods] = useState<Apod[]>(readApods());
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   function goToApodDetails(apod: Apod) {
     navigate("/detail", { state: apod });
@@ -27,13 +29,13 @@ export default function History() {
       <main className="history-main">
         <div className="history-header-section">
           <div className="history-title-group">
-            <h1>Archivo de Exploración</h1>
-            <p>Un registro de todos tus descubrimientos y viajes a través del cosmos.</p>
+            <h1>{t('pages.history.title')}</h1>
+            <p>{t('pages.history.subtitle')}</p>
           </div>
           
           {apods.length > 0 && (
             <button className="btn-clear-history" onClick={handleClearHistory}>
-              <FaTrash /> Limpiar Archivo
+              <FaTrash /> {t('pages.history.clearHistory')}
             </button>
           )}
         </div>
@@ -43,12 +45,12 @@ export default function History() {
             <div className="empty-icon-container">
               <FaHistory className="empty-icon" />
             </div>
-            <h2>Tu archivo está vacío</h2>
+            <h2>{t('pages.history.emptyTitle')}</h2>
             <p>
-              Aún no has explorado ninguna imagen astronómica. ¡El universo te espera!
+              {t('pages.history.emptyDesc')}
             </p>
             <button className="btn btn-primary" onClick={() => navigate("/discover")}>
-              <FaCompass /> Iniciar Exploración
+              <FaCompass /> {t('pages.history.startExploring')}
             </button>
           </div>
         ) : (

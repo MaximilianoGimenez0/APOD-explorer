@@ -1,7 +1,10 @@
 import { FaGithub, FaWhatsapp, FaLinkedin, FaRocket } from "react-icons/fa";
+import { useTranslation } from "../../i18n";
 import "./Footer.css";
 
 export default function Footer() {
+  const { t } = useTranslation();
+
   return (
     <footer className="footer">
       <div className="footer-container">
@@ -10,11 +13,11 @@ export default function Footer() {
             <FaRocket className="footer-icon" />
             <h3>APOD<span>explorer</span></h3>
           </div>
-          <p className="footer-slogan">Descubriendo las maravillas del cosmos, un día a la vez.</p>
+          <p className="footer-slogan">{t('footer.slogan')}</p>
         </div>
         
         <div className="footer-links-section">
-          <h4>Desarrollador</h4>
+          <h4>{t('footer.developer')}</h4>
           <p className="author-name">Maximiliano Giménez</p>
           <div className="footer-socials">
             <a href="https://github.com/MaximilianoGimenez0" target="_blank" rel="noreferrer" aria-label="GitHub">
@@ -31,7 +34,7 @@ export default function Footer() {
       </div>
       
       <div className="footer-bottom">
-        <p>&copy; {new Date().getFullYear()} APOD-explorer. Datos proporcionados por la NASA.</p>
+        <p>&copy; {new Date().getFullYear()} APOD-explorer. {t('footer.dataBy')}</p>
       </div>
     </footer>
   );

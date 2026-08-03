@@ -6,11 +6,13 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import ApodControls from "../../components/ApodControls/ApodControls";
 import { FaCalendarAlt } from "react-icons/fa";
+import { useTranslation } from "../../i18n";
 
 export default function ApodDetail() {
   const location = useLocation();
   const apod = location.state;
   const [loading, setLoading] = useState(true);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (apod) {
@@ -63,7 +65,7 @@ export default function ApodDetail() {
                   <FaCalendarAlt /> {apod.date}
                 </span>
                 {apod.copyright && (
-                  <span className="detail-copyright">© {apod.copyright}</span>
+                  <span className="detail-copyright">{t('pages.detail.copyright')} {apod.copyright}</span>
                 )}
               </div>
               <h1 className="detail-title">{apod.title}</h1>

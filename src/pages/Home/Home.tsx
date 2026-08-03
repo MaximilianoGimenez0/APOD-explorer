@@ -6,12 +6,14 @@ import { getRandomApodImages } from "../../services/apodService";
 import type { Apod } from "../../models/Apod";
 import { useNavigate } from "react-router";
 import { FaPlay, FaArrowRight, FaCompass } from "react-icons/fa";
+import { useTranslation } from "../../i18n";
 
 export default function Home() {
   const [featured, setFeatured] = useState<Apod | null>(null);
   const [discoveries, setDiscoveries] = useState<Apod[]>([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     async function loadContent() {
@@ -58,7 +60,7 @@ export default function Home() {
               </div>
 
               <div className="hero-text-content">
-                <div className="hero-badge">DESCUBRIMIENTO DEL DÍA</div>
+                <div className="hero-badge">{t('pages.home.discoveryOfDay')}</div>
                 <h1 className="hero-title">{featured.title}</h1>
                 <p className="hero-date">{featured.date}</p>
                 <p className="hero-description">
@@ -69,14 +71,14 @@ export default function Home() {
                     className="btn btn-primary"
                     onClick={() => goToDetail(featured)}
                   >
-                    Explorar <FaArrowRight />
+                    {t('pages.home.exploreButton')} <FaArrowRight />
                   </button>
                 </div>
               </div>
             </div>
           ) : (
              <div className="hero-empty">
-                <h1>Descubrí el Universo 🌌</h1>
+                <h1>{t('pages.home.emptyHero')}</h1>
              </div>
           )}
         </section>
@@ -84,9 +86,9 @@ export default function Home() {
         {/* DAILY DISCOVERY SECTION */}
         <section className="discovery-section">
           <div className="section-header">
-            <h2>Explora el cosmos</h2>
+            <h2>{t('pages.home.exploreCosmos')}</h2>
             <button className="btn-link" onClick={() => navigate("/discover")}>
-              Ver más <FaArrowRight />
+              {t('pages.home.viewMore')} <FaArrowRight />
             </button>
           </div>
 
@@ -126,18 +128,18 @@ export default function Home() {
         <section className="features-section">
           <div className="feature-item">
             <div className="feature-icon"><FaCompass /></div>
-            <h3>Exploración Infinita</h3>
-            <p>Descubrí imágenes diarias del universo directamente de la NASA.</p>
+            <h3>{t('pages.home.features.infinite.title')}</h3>
+            <p>{t('pages.home.features.infinite.desc')}</p>
           </div>
           <div className="feature-item">
             <div className="feature-icon">❤️</div>
-            <h3>Tu Colección</h3>
-            <p>Guardá tus fenómenos astronómicos favoritos en tu galería personal.</p>
+            <h3>{t('pages.home.features.collection.title')}</h3>
+            <p>{t('pages.home.features.collection.desc')}</p>
           </div>
           <div className="feature-item">
             <div className="feature-icon">📚</div>
-            <h3>Archivo Histórico</h3>
-            <p>Navegá a través de la historia y revive descubrimientos pasados.</p>
+            <h3>{t('pages.home.features.history.title')}</h3>
+            <p>{t('pages.home.features.history.desc')}</p>
           </div>
         </section>
       </main>

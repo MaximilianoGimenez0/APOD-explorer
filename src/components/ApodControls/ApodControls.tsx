@@ -3,6 +3,7 @@ import "./ApodControls.css";
 import { addFavourite } from "../../services/internalFunctions";
 import { useState } from "react";
 import { FaHeart, FaShareAlt } from "react-icons/fa";
+import { useTranslation } from "../../i18n";
 
 type ApodControlsProps = {
   apod: Apod;
@@ -12,6 +13,7 @@ type ApodControlsProps = {
 export default function ApodControls({ apod, share }: ApodControlsProps) {
   const apodKey = apod.date + apod.title;
   const [liked, setLiked] = useState(isLiked(apodKey));
+  const { t } = useTranslation();
 
   const handleClick = () => {
     addFavourite(apod);
@@ -23,10 +25,10 @@ export default function ApodControls({ apod, share }: ApodControlsProps) {
       <button
         className={`control-btn ${liked ? "btn-liked" : ""}`}
         onClick={handleClick}
-        aria-label={liked ? "Quitar de favoritos" : "Añadir a favoritos"}
+        aria-label={liked ? t('components.apodControls.removeFromFavs') : t('components.apodControls.addToFavs')}
       >
         <FaHeart className="control-icon" />
-        <span>{liked ? "Guardado" : "Guardar"}</span>
+        <span>{liked ? t('components.apodControls.saved') : t('components.apodControls.save')}</span>
       </button>
 
       <div className="control-divider"></div>
@@ -34,10 +36,10 @@ export default function ApodControls({ apod, share }: ApodControlsProps) {
       <button
         className="control-btn btn-share"
         onClick={() => share(apod)}
-        aria-label="Compartir"
+        aria-label={t('components.apodControls.share')}
       >
         <FaShareAlt className="control-icon" />
-        <span>Compartir</span>
+        <span>{t('components.apodControls.share')}</span>
       </button>
     </div>
   );

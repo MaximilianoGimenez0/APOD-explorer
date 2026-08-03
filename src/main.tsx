@@ -8,19 +8,23 @@ import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import Home from "./pages/Home/Home";
 import Contact from "./pages/Contact/Contact";
 import History from "./pages/History/History";
+import { LanguageProvider } from "./i18n";
+
 const root = document.getElementById("root");
 
 createRoot(root!).render(
-  <HashRouter>
-    <ScrollToTop />
-    <Routes>
-      <Route path="/" element={<Home />}></Route>
-      <Route path="/home" element={<Home />}></Route>
-      <Route path="/discover" element={<ApodList />} />
-      <Route path="/detail" element={<ApodDetail />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/favourites" element={<Favourites />} />
-      <Route path="/history" element={<History />}></Route>
-    </Routes>
-  </HashRouter>
+  <LanguageProvider>
+    <HashRouter>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/home" element={<Home />}></Route>
+        <Route path="/discover" element={<ApodList />} />
+        <Route path="/detail" element={<ApodDetail />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/favourites" element={<Favourites />} />
+        <Route path="/history" element={<History />}></Route>
+      </Routes>
+    </HashRouter>
+  </LanguageProvider>
 );

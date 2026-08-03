@@ -6,10 +6,12 @@ import type { Apod } from "../../models/Apod";
 import { useNavigate } from "react-router";
 import { FaHeart, FaCompass } from "react-icons/fa";
 import { useState, useEffect } from "react";
+import { useTranslation } from "../../i18n";
 
 export default function Favourites() {
   const [apods, setApods] = useState<Apod[]>([]);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     setApods(readApods());
@@ -28,8 +30,8 @@ export default function Favourites() {
       <Header />
       <main className="favourites-main">
         <div className="favourites-header">
-          <h1>Tu Colección Estelar</h1>
-          <p>Tus descubrimientos astronómicos favoritos guardados para siempre.</p>
+          <h1>{t('pages.favourites.title')}</h1>
+          <p>{t('pages.favourites.subtitle')}</p>
         </div>
 
         {apods.length === 0 ? (
@@ -37,12 +39,12 @@ export default function Favourites() {
             <div className="empty-icon-container">
               <FaHeart className="empty-icon" />
             </div>
-            <h2>Aún no hay descubrimientos guardados</h2>
+            <h2>{t('pages.favourites.emptyTitle')}</h2>
             <p>
-              Explora nuestra galería astronómica y guarda tus imágenes favoritas para crear tu propia colección personal del cosmos.
+              {t('pages.favourites.emptyDesc')}
             </p>
             <button className="btn btn-primary" onClick={() => navigate("/discover")}>
-              <FaCompass /> Iniciar Exploración
+              <FaCompass /> {t('pages.favourites.startExploring')}
             </button>
           </div>
         ) : (

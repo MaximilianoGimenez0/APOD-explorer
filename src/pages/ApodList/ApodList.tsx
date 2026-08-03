@@ -10,11 +10,13 @@ import "./ApodList.css";
 import { useNavigate } from "react-router";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+import { useTranslation } from "../../i18n";
 
 export default function ApodList() {
   const navigate = useNavigate();
   const [images, setImages] = useState<Apod[]>([]);
   const [loading, setLoading] = useState(true);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const cachedApods = localStorage.getItem("cachedApods");
@@ -42,8 +44,8 @@ export default function ApodList() {
 
           <section className="discover-content">
             <div className="discover-header">
-              <h1 className="discover-title">Exploración Cósmica</h1>
-              <p className="discover-subtitle">Descubrí las maravillas del universo a través del archivo de la NASA</p>
+              <h1 className="discover-title">{t('pages.discover.title')}</h1>
+              <p className="discover-subtitle">{t('pages.discover.subtitle')}</p>
             </div>
 
             {loading ? (

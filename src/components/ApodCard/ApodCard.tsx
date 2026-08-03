@@ -1,8 +1,10 @@
 import type { Apod } from "../../models/Apod";
 import "./ApodCard.css";
 import { FaPlay } from "react-icons/fa";
+import { useTranslation } from "../../i18n";
 
 export default function ApodCard({ apod }: { apod: Apod }) {
+  const { t } = useTranslation();
   const previewText =
     apod.explanation.length > 120
       ? apod.explanation.slice(0, 120) + "..."
@@ -36,7 +38,7 @@ export default function ApodCard({ apod }: { apod: Apod }) {
         </div>
         <p className="apod-card-description">{previewText}</p>
         <div className="apod-card-action">
-          <span className="text-link">Explorar misterio</span>
+          <span className="text-link">{t('components.apodCard.exploreMystery')}</span>
         </div>
       </div>
     </div>
