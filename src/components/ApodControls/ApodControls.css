@@ -1,47 +1,55 @@
-.user-controls {
+.apod-controls-container {
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--radius-full);
+  padding: var(--space-xs);
+  gap: var(--space-xs);
+  margin: var(--space-lg) 0;
+}
+
+.control-divider {
+  width: 1px;
+  height: 24px;
+  background: var(--surface-glass-border);
+}
+
+.control-btn {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  border: solid 1px #8b8a8a6e;
-  margin: 10px 0;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-full);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: all var(--transition-fast);
 }
 
-.favourite-button,
-.share-button {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 20%;
-  margin: 10px 0;
+.control-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
-.share-button {
-  width: 20%;
+.control-icon {
+  font-size: 1.2rem;
+  transition: transform var(--transition-fast);
 }
 
-.heart-icon {
-  width: 48px;
-  height: 48px;
-  fill: none;
-  stroke: #999;
-  stroke-width: 2;
-  transition: fill 0.3s ease, stroke 0.3s ease, transform 0.2s ease;
+.control-btn:hover .control-icon {
+  transform: scale(1.1);
 }
 
-.heart-unliked .heart-icon {
-  fill: none;
-  stroke: #999;
+.btn-liked {
+  color: var(--accent-tertiary);
 }
 
-.heart-liked .heart-icon {
-  fill: #e0245e;
-  stroke: #e0245e;
-  transform: scale(1.2);
+.btn-liked:hover {
+  background: rgba(236, 72, 153, 0.15);
 }
 
-.control-button {
-  border: none;
-  background: none;
-  cursor: pointer;
-  padding: 0;
+.btn-share {
+  color: var(--accent-primary);
+}
+
+.btn-share:hover {
+  background: rgba(59, 130, 246, 0.15);
 }

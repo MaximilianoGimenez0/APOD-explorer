@@ -1,5 +1,6 @@
 import { createRoot } from "react-dom/client";
 import { HashRouter, Routes, Route } from "react-router";
+import "./index.css";
 import ApodList from "./pages/ApodList/ApodList";
 import ApodDetail from "./pages/ApodDetail/ApodDetail";
 import Favourites from "./pages/Favourites/Favourites";

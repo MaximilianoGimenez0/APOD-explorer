@@ -5,70 +5,78 @@ import "./ApodDetail.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import ApodControls from "../../components/ApodControls/ApodControls";
+import { FaCalendarAlt } from "react-icons/fa";
 
-export default () => {
+export default function ApodDetail() {
   const location = useLocation();
   const apod = location.state;
-
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    addHistory(apod);
+    if (apod) {
+      addHistory(apod);
+    }
   }, [apod]);
 
-  return (
-    <>
-      <Header />
-      <div className="main">
-        <div className="detail-container">
-          <div className="apod-media">
-            <h1 className="apod-title">{apod.title}</h1>
-            {apod.thumbnail_url && (
-              <p className="apod-thumbnail">
-                <strong>Thumbnail:</strong>{" "}
-                <a
-                  href={apod.thumbnail_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {apod.thumbnail_url}
-                </a>
-              </p>
-            )}
+  if (!apod) return null;
 
-            {apod.media_type === "image" ? (
-              <div className="image-wrapper">
-                {loading && <div className="inline-loader"></div>}
-                <img
-                  src={apod.hdurl || apod.url}
-                  alt={apod.title}
-                  className={`apod-image ${loading ? "hidden" : ""}`}
-                  onLoad={() => setLoading(false)}
-                  onError={() => setLoading(false)}
-                />
-              </div>
-            ) : (
+  return (
+    <div className="detail-page-wrapper">
+      <Header />
+      <main className="detail-main">
+        {/* Media Hero Section */}
+        <section className="detail-media-section">
+          {apod.media_type === "image" ? (
+            <div className="detail-image-container">
+              {loading && (
+                <div className="detail-media-skeleton">
+                  <div className="skeleton-pulse"></div>
+                </div>
+              )}
+              <img
+                src={apod.hdurl || apod.url}
+                alt={apod.title}
+                className={`detail-image ${loading ? "hidden" : ""}`}
+                onLoad={() => setLoading(false)}
+                onError={() => setLoading(false)}
+              />
+            </div>
+          ) : (
+            <div className="detail-video-container">
               <iframe
                 src={apod.url}
                 title={apod.title}
-                className="apod-video"
+                className="detail-video"
                 allowFullScreen
+                onLoad={() => setLoading(false)}
               />
-            )}
-          </div>
+            </div>
+          )}
+        </section>
 
-          <ApodControls apod={apod} share={share} />
-          <div className="apod-date">
-            <p>
-              <strong>Fecha:</strong> {apod.date}
-            </p>
+        {/* Content Section */}
+        <section className="detail-content-section">
+          <div className="detail-content-inner">
+            <header className="detail-header">
+              <div className="detail-meta">
+                <span className="detail-date">
+                  <FaCalendarAlt /> {apod.date}
+                </span>
+                {apod.copyright && (
+                  <span className="detail-copyright">© {apod.copyright}</span>
+                )}
+              </div>
+              <h1 className="detail-title">{apod.title}</h1>
+              <ApodControls apod={apod} share={share} />
+            </header>
+
+            <article className="detail-explanation">
+              <p>{apod.explanation}</p>
+            </article>
           </div>
-          <div className="apod-explanation">
-            <p>{apod.explanation}</p>
-          </div>
-        </div>
-      </div>
+        </section>
+      </main>
       <Footer />
-    </>
+    </div>
   );
-};
+}

@@ -6,10 +6,10 @@ import type { Apod } from "../../models/Apod";
 import { useNavigate } from "react-router";
 import { cleanHistory } from "../../services/internalFunctions";
 import { useState } from "react";
+import { FaTrash, FaCompass, FaHistory } from "react-icons/fa";
 
 export default function History() {
   const [apods, setApods] = useState<Apod[]>(readApods());
-
   const navigate = useNavigate();
 
   function goToApodDetails(apod: Apod) {
@@ -22,31 +22,54 @@ export default function History() {
   }
 
   return (
-    <>
+    <div className="history-page">
       <Header />
-      <main className="main">
-        <div className="title-controls">
-          <h1 className="history-title">Apods Visitados</h1>
-          <button className="clear-history-button" onClick={handleClearHistory}>
-            Borrar historial
-          </button>
+      <main className="history-main">
+        <div className="history-header-section">
+          <div className="history-title-group">
+            <h1>Archivo de Exploración</h1>
+            <p>Un registro de todos tus descubrimientos y viajes a través del cosmos.</p>
+          </div>
+          
+          {apods.length > 0 && (
+            <button className="btn-clear-history" onClick={handleClearHistory}>
+              <FaTrash /> Limpiar Archivo
+            </button>
+          )}
         </div>
-        <div className="history-entries">
-          {apods.map((apod) => (
-            <HistoryEntry
-              key={apod.date + apod.title}
-              apod={apod}
-              goToApodDetails={goToApodDetails}
-            />
-          ))}
-        </div>
+
+        {apods.length === 0 ? (
+          <div className="history-empty">
+            <div className="empty-icon-container">
+              <FaHistory className="empty-icon" />
+            </div>
+            <h2>Tu archivo está vacío</h2>
+            <p>
+              Aún no has explorado ninguna imagen astronómica. ¡El universo te espera!
+            </p>
+            <button className="btn btn-primary" onClick={() => navigate("/discover")}>
+              <FaCompass /> Iniciar Exploración
+            </button>
+          </div>
+        ) : (
+          <div className="history-timeline">
+            {apods.map((apod, index) => (
+              <HistoryEntry
+                key={apod.date + apod.title + index}
+                apod={apod}
+                goToApodDetails={goToApodDetails}
+                index={index}
+              />
+            ))}
+          </div>
+        )}
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
 
 function readApods(): Apod[] {
-  const cachedFavourites = localStorage.getItem("history");
-  return cachedFavourites ? JSON.parse(cachedFavourites) : [];
+  const cachedHistory = localStorage.getItem("history");
+  return cachedHistory ? JSON.parse(cachedHistory) : [];
 }

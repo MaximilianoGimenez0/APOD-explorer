@@ -1,48 +1,122 @@
-.card {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border-radius: 1rem;
+.apod-card-premium {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-xl);
   overflow: hidden;
-  border: none;
-  height: 100%;
-  background-color: white;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-}
-
-.card-img-top {
-  object-fit: cover;
-  height: 200px;
-  width: 100%;
-}
-
-.card-body {
-  padding: 1rem;
-}
-
-.card-title {
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
-.card-text {
-  font-size: 1rem;
-  color: #252525;
-  max-height: 350px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.card-text.small {
-  line-height: 1.3;
-}
-
-.text-muted {
-  font-size: 0.8rem;
-}
-
-.btn {
+  border: 1px solid var(--surface-glass-border);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
   cursor: pointer;
+  height: 100%;
+}
+
+.apod-card-premium:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+  border-color: rgba(255,255,255,0.1);
+}
+
+.apod-card-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+}
+
+.apod-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.apod-card-premium:hover .apod-card-media img {
+  transform: scale(1.05);
+}
+
+.apod-card-video {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-tertiary);
+  position: relative;
+}
+
+.apod-card-video .video-icon {
+  font-size: 3rem;
+  color: var(--text-primary);
+  position: absolute;
+  z-index: 2;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+.apod-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent 50%, rgba(11, 19, 36, 0.8) 100%);
+  pointer-events: none;
+}
+
+.apod-card-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: var(--space-lg);
+  gap: var(--space-sm);
+}
+
+.apod-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.apod-card-date {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.apod-card-title {
+  font-size: 1.15rem;
+  line-height: 1.3;
+  color: var(--text-primary);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.apod-card-description {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+  flex: 1;
+}
+
+.apod-card-action {
+  margin-top: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--border-light);
+}
+
+.text-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: color var(--transition-fast);
+}
+
+.apod-card-premium:hover .text-link {
+  color: var(--accent-primary);
 }

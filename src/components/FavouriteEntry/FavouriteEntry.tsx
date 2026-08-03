@@ -2,72 +2,65 @@ import type { Apod } from "../../models/Apod";
 import "./FavouriteEntry.css";
 import { addFavourite } from "../../services/internalFunctions";
 import { useState } from "react";
+import { FaHeart, FaPlay } from "react-icons/fa";
 
 type FavouriteEntryProps = {
   apod: Apod;
   goToApodDetails(apod: Apod): void;
+  onLikeChange?: () => void;
 };
 
 export default function FavouriteEntry({
   apod,
   goToApodDetails,
+  onLikeChange
 }: FavouriteEntryProps) {
   const apodKey = apod.date + apod.title;
-
   const [liked, setLiked] = useState(isLiked(apodKey));
 
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
     addFavourite(apod);
     setLiked(isLiked(apodKey));
+    if (onLikeChange) {
+      onLikeChange();
+    }
   };
 
   return (
-    <>
-      <div className="favourite-entry">
-        <div className="favourite-header" onClick={() => goToApodDetails(apod)}>
-          <img className="favourite-img" src={apod.url} alt="" />
-          <div className="favourite-info">
-            <p className="favourite-data">{apod.title}</p>
-            <p className="favourite-data">{apod.date}</p>
+    <div className="fav-entry-card" onClick={() => goToApodDetails(apod)}>
+      <div className="fav-entry-media">
+        {apod.media_type === "image" ? (
+          <img src={apod.url} alt={apod.title} loading="lazy" />
+        ) : (
+          <div className="fav-video-placeholder">
+             <img src={apod.thumbnail_url || "https://images.unsplash.com/photo-1462331940025-496dfbfc7564"} alt={apod.title} />
+             <FaPlay className="fav-video-icon" />
           </div>
-        </div>
-        <div className="like-container">
-          <button
-            className={` control-button ${
-              liked ? "heart-liked" : "heart-unliked"
-            }`}
-            id="likeBtn"
-            aria-label="Like"
-            onClick={handleClick}
-          >
-            <svg viewBox="0 0 24 24" className="heart-icon">
-              <path
-                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 
-             2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09
-             C13.09 3.81 14.76 3 16.5 3
-             19.58 3 22 5.42 22 8.5
-             c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-              />
-            </svg>
-          </button>
-        </div>
+        )}
+        <div className="fav-entry-overlay"></div>
+        <button 
+          className={`fav-like-btn ${liked ? 'liked' : ''}`}
+          onClick={handleClick}
+          aria-label={liked ? "Quitar de favoritos" : "Añadir a favoritos"}
+        >
+          <FaHeart />
+        </button>
       </div>
-    </>
+      <div className="fav-entry-content">
+        <span className="fav-entry-date">{apod.date}</span>
+        <h3 className="fav-entry-title">{apod.title}</h3>
+      </div>
+    </div>
   );
 }
 
 function isLiked(apodKey: string) {
   const cached = readApods();
-  if (cached.some((a) => a.date + a.title === apodKey)) {
-    return true;
-  } else {
-    return false;
-  }
+  return cached.some((a) => a.date + a.title === apodKey);
 }
 
 function readApods(): Apod[] {
   const cachedFavourites = localStorage.getItem("favourites");
-  const apods: Apod[] = cachedFavourites ? JSON.parse(cachedFavourites) : [];
-
-  return apods;
+  return cachedFavourites ? JSON.parse(cachedFavourites) : [];
 }

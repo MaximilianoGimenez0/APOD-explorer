@@ -10,7 +10,8 @@ import "./ApodList.css";
 import { useNavigate } from "react-router";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-export default function () {
+
+export default function ApodList() {
   const navigate = useNavigate();
   const [images, setImages] = useState<Apod[]>([]);
   const [loading, setLoading] = useState(true);
@@ -27,50 +28,53 @@ export default function () {
   }, []);
 
   return (
-    <>
-      <Header></Header>
-      <div>
-        <div className="discover-container">
-          <div className="filters">
+    <div className="discover-page-wrapper">
+      <Header />
+      <main className="discover-main">
+        <div className="discover-layout">
+          
+          <aside className="discover-sidebar">
             <Filters
               onRandom={fetchRandomImages}
               onFiltered={fetchFilteredImages}
-            ></Filters>
-          </div>
-          <div className="result-list">
-            <div className="apod-container">
-              <h2 className="apod-title">Imágenes del espacio 🚀</h2>
-              <hr />
-              {loading ? (
-                <div
-                  className="apod-spinner"
-                  role="status"
-                  aria-label="Cargando imágenes"
-                ></div>
-              ) : (
-                <div className="apod-grid">
-                  {images.map((apod) => (
-                    <div
-                      onClick={() => goToApodDetail(apod)}
-                      className="apod-card-wrapper"
-                      key={apod.date + apod.title}
-                    >
-                      <ApodCard apod={apod} />
-                    </div>
-                  ))}
-                </div>
-              )}
+            />
+          </aside>
+
+          <section className="discover-content">
+            <div className="discover-header">
+              <h1 className="discover-title">Exploración Cósmica</h1>
+              <p className="discover-subtitle">Descubrí las maravillas del universo a través del archivo de la NASA</p>
             </div>
-          </div>
+
+            {loading ? (
+              <div className="gallery-grid">
+                {Array.from({ length: 9 }).map((_, i) => (
+                  <div key={i} className="gallery-skeleton"></div>
+                ))}
+              </div>
+            ) : (
+              <div className="gallery-grid">
+                {images.map((apod, index) => (
+                  <div
+                    onClick={() => goToApodDetail(apod)}
+                    className="gallery-item"
+                    key={`${apod.date}-${apod.title}-${index}`}
+                  >
+                    <ApodCard apod={apod} />
+                  </div>
+                ))}
+              </div>
+            )}
+          </section>
+
         </div>
-      </div>
-      <Footer></Footer>
-    </>
+      </main>
+      <Footer />
+    </div>
   );
 
   function loadCache(apod: Apod[]) {
     const toCache = JSON.stringify(apod);
-
     localStorage.setItem("cachedApods", toCache);
   }
 
@@ -79,7 +83,6 @@ export default function () {
       setLoading(true);
       const imgs = await getFilteredApodImages(year, month);
       setImages(imgs);
-
       loadCache(imgs);
     } catch (err) {
       console.error(err);
@@ -91,9 +94,8 @@ export default function () {
   async function fetchRandomImages() {
     try {
       setLoading(true);
-      const imgs = await getRandomApodImages();
+      const imgs = await getRandomApodImages(12); // Fetch 12 images for a good gallery size
       setImages(imgs);
-
       loadCache(imgs);
     } catch (err) {
       console.error(err);

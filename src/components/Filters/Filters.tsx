@@ -1,5 +1,6 @@
 import "./Filters.css";
 import { useState } from "react";
+import { FaSearch, FaRandom, FaCalendarAlt } from "react-icons/fa";
 
 type FiltersProps = {
   onRandom: () => void;
@@ -7,52 +8,45 @@ type FiltersProps = {
 };
 
 export default function Filters({ onRandom, onFiltered }: FiltersProps) {
-  const [year, setStart] = useState(1996);
+  const [year, setStart] = useState(2023);
   const [month, setEnd] = useState(6);
 
   const monthNames = [
-    "Enero",
-    "Febrero",
-    "Marzo",
-    "Abril",
-    "Mayo",
-    "Junio",
-    "Julio",
-    "Agosto",
-    "Septiembre",
-    "Octubre",
-    "Noviembre",
-    "Diciembre",
+    "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
   ];
 
   return (
-    <div className="filters-container">
-      <div className="range-search">
-        <h2>DESCUBRÍ</h2>
+    <div className="filters-sidebar glass-panel">
+      <div className="filters-header">
+        <FaCalendarAlt className="filters-icon" />
+        <h2>Explorar Archivo</h2>
+      </div>
 
-        <div className="input-container">
-          <label className="filter-label" htmlFor="start">
-            {year}
-          </label>
+      <div className="filters-body">
+        <div className="filter-group">
+          <div className="filter-label-row">
+            <span className="filter-label">Año</span>
+            <span className="filter-value">{year}</span>
+          </div>
           <input
-            className="filter-input"
+            className="filter-slider"
             type="range"
-            id="start"
             min={1996}
-            max={2025}
+            max={new Date().getFullYear()}
             value={year}
             onChange={(e) => setStart(Number(e.target.value))}
           />
         </div>
 
-        <div className="input-container">
-          <label className="filter-label" htmlFor="end">
-            {monthNames[month - 1]}
-          </label>
+        <div className="filter-group">
+          <div className="filter-label-row">
+            <span className="filter-label">Mes</span>
+            <span className="filter-value">{monthNames[month - 1]}</span>
+          </div>
           <input
-            className="filter-input"
+            className="filter-slider"
             type="range"
-            id="end"
             min={1}
             max={12}
             value={month}
@@ -61,18 +55,20 @@ export default function Filters({ onRandom, onFiltered }: FiltersProps) {
         </div>
 
         <button
-          className="custom-button search-button"
+          className="btn-filter btn-search"
           onClick={() => onFiltered(year, month)}
         >
-          Buscar
+          <FaSearch /> Buscar
         </button>
       </div>
 
-      <hr className="separador" />
+      <div className="filters-divider">
+        <span>O</span>
+      </div>
 
-      <div className="random-search">
-        <button className="custom-button search-button" onClick={onRandom}>
-          Random
+      <div className="filters-body">
+        <button className="btn-filter btn-random" onClick={onRandom}>
+          <FaRandom /> Descubrimiento Aleatorio
         </button>
       </div>
     </div>
