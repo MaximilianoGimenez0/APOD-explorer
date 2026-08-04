@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useTranslation } from '../../i18n';
 import type { Language } from '../../i18n';
-import { FaGlobe } from 'react-icons/fa';
+import { FiGlobe, FiChevronDown, FiCheck } from "react-icons/fi";
 import './LanguageSelector.css';
 
 const LANGUAGES: { code: Language; label: string; flag: string }[] = [
@@ -40,9 +40,11 @@ export default function LanguageSelector() {
         className="language-selector-btn"
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Seleccionar idioma"
+        aria-expanded={isOpen}
       >
-        <FaGlobe className="globe-icon" />
-        <span className="current-flag">{selectedLang.flag}</span>
+        <FiGlobe className="globe-icon" />
+        <span className="current-lang-code">{selectedLang.code.toUpperCase()}</span>
+        <FiChevronDown className={`chevron-icon ${isOpen ? 'open' : ''}`} />
       </button>
 
       {isOpen && (
@@ -55,6 +57,7 @@ export default function LanguageSelector() {
             >
               <span className="lang-flag">{lang.flag}</span>
               <span className="lang-label">{lang.label}</span>
+              {language === lang.code && <FiCheck className="check-icon" />}
             </button>
           ))}
         </div>
