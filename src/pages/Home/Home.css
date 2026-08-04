@@ -361,3 +361,11 @@
     gap: var(--space-sm);
   }
 }
+
+.footer-divider {
+  border: none;
+  height: 1px;
+  background-color: var(--border-light);
+  margin: 1rem auto;
+  max-width: 1200px;
+}

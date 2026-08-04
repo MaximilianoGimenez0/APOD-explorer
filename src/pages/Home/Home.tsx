@@ -67,7 +67,7 @@ export default function Home() {
                   {featured.explanation.substring(0, 180)}...
                 </p>
                 <div className="hero-actions">
-                  <button 
+                  <button
                     className="btn btn-primary"
                     onClick={() => goToDetail(featured)}
                   >
@@ -77,9 +77,9 @@ export default function Home() {
               </div>
             </div>
           ) : (
-             <div className="hero-empty">
-                <h1>{t('pages.home.emptyHero')}</h1>
-             </div>
+            <div className="hero-empty">
+              <h1>{t('pages.home.emptyHero')}</h1>
+            </div>
           )}
         </section>
 
@@ -99,8 +99,8 @@ export default function Home() {
               ))
             ) : (
               discoveries.map((apod, index) => (
-                <div 
-                  key={`${apod.date}-${index}`} 
+                <div
+                  key={`${apod.date}-${index}`}
                   className="discovery-card"
                   onClick={() => goToDetail(apod)}
                 >
@@ -143,6 +143,11 @@ export default function Home() {
           </div>
         </section>
       </main>
+
+
+      <hr className="footer-divider" />
+
+
       <Footer />
     </>
   );
