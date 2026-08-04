@@ -1,7 +1,7 @@
 .apod-controls-container {
   display: inline-flex;
   align-items: center;
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-lg);
   padding: var(--space-xs);
   gap: var(--space-xs);
   margin: var(--space-lg) 0;
@@ -18,7 +18,7 @@
   align-items: center;
   gap: var(--space-sm);
   padding: 0.6rem 1.2rem;
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-lg);
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--text-primary);

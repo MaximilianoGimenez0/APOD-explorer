@@ -5,8 +5,15 @@
 }
 
 @keyframes slideIn {
-  from { opacity: 0; transform: translateX(-20px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .timeline-node {
@@ -17,7 +24,7 @@
   height: 1rem;
   background: var(--bg-primary);
   border: 3px solid var(--accent-primary);
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-lg);
   transform: translateX(-50%);
   z-index: 2;
   transition: all var(--transition-fast);
@@ -39,8 +46,8 @@
 
 .history-entry-timeline:hover .history-entry-content {
   transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-  border-color: rgba(255,255,255,0.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 .history-entry-media {
@@ -78,7 +85,7 @@
   font-size: 2.5rem;
   color: white;
   z-index: 2;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
 }
 
 .history-entry-info {
@@ -129,12 +136,12 @@
   .history-entry-content {
     flex-direction: column;
   }
-  
+
   .history-entry-media {
     flex: none;
     height: 200px;
   }
-  
+
   .history-title {
     font-size: 1.25rem;
   }

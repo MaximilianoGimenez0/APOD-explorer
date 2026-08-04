@@ -2,15 +2,21 @@
 
 :root {
   /* Color Palette - Dark Space Theme */
-  --bg-primary: #050810;      /* Deep space black/blue */
-  --bg-secondary: #0b1324;    /* Slightly lighter for cards */
-  --bg-tertiary: #162238;     /* For hover states and borders */
-  
-  --accent-primary: #3b82f6;  /* Soft blue */
+  --bg-primary: #050810;
+  /* Deep space black/blue */
+  --bg-secondary: #0b1324;
+  /* Slightly lighter for cards */
+  --bg-tertiary: #162238;
+  /* For hover states and borders */
+
+  --accent-primary: #3b82f6;
+  /* Soft blue */
   --accent-primary-hover: #2563eb;
-  --accent-secondary: #8b5cf6; /* Muted purple */
-  --accent-tertiary: #ec4899;  /* Pink highlight */
-  
+  --accent-secondary: #8b5cf6;
+  /* Muted purple */
+  --accent-tertiary: #ec4899;
+  /* Pink highlight */
+
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
@@ -54,13 +60,16 @@
 }
 
 /* Global Resets */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
   background-color: var(--bg-primary);
@@ -79,7 +88,12 @@ html, body {
 }
 
 /* Typography elements */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   line-height: 1.2;
   font-weight: 700;
@@ -92,7 +106,8 @@ a {
   transition: color var(--transition-fast);
 }
 
-img, video {
+img,
+video {
   max-width: 100%;
   height: auto;
   display: block;
@@ -117,7 +132,8 @@ button {
 
 ::-webkit-scrollbar-thumb {
   background: var(--bg-tertiary);
-  border-radius: 9999px; /* var(--radius-full) */
+  border-radius: 9999px;
+  /* var(--radius-lg) */
 }
 
 ::-webkit-scrollbar-thumb:hover {
