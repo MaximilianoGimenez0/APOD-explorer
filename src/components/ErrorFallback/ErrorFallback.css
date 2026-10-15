@@ -1,0 +1,397 @@
+/* ==========================================================================
+   ErrorFallback Component Styles
+   Adapts to content container with a cosmic glassmorphic aesthetic
+   ========================================================================== */
+
+.error-fallback-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 420px;
+  padding: var(--space-xl) var(--space-md);
+  box-sizing: border-box;
+  animation: errorFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.error-fallback-card {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-2xl) var(--space-xl);
+  background: rgba(11, 19, 36, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: var(--radius-2xl);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6),
+              0 0 30px -10px rgba(59, 130, 246, 0.15);
+  overflow: hidden;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+/* Background ambient glow halo centered behind the icon */
+.error-glow-halo {
+  position: absolute;
+  top: calc(var(--space-2xl) + 48px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, rgba(139, 92, 246, 0.1) 50%, transparent 70%);
+  pointer-events: none;
+  filter: blur(25px);
+  animation: glowPulse 4s infinite alternate ease-in-out;
+  z-index: 0;
+}
+
+/* Specific glows based on error variant */
+.error-fallback-wrapper.is-timeout .error-glow-halo {
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.25) 0%, rgba(239, 68, 68, 0.12) 50%, transparent 70%);
+}
+
+.error-fallback-wrapper.is-timeout .error-fallback-card {
+  border-color: rgba(245, 158, 11, 0.25);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6),
+              0 0 30px -10px rgba(245, 158, 11, 0.2);
+}
+
+.error-fallback-wrapper.is-not-found .error-glow-halo {
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.25) 0%, rgba(59, 130, 246, 0.12) 50%, transparent 70%);
+}
+
+.error-fallback-wrapper.is-not-found .error-fallback-card {
+  border-color: rgba(167, 139, 250, 0.25);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6),
+              0 0 30px -10px rgba(167, 139, 250, 0.2);
+}
+
+.error-fallback-wrapper.is-forbidden .error-glow-halo {
+  background: radial-gradient(circle, rgba(239, 68, 68, 0.3) 0%, rgba(220, 38, 38, 0.12) 50%, transparent 70%);
+}
+
+.error-fallback-wrapper.is-forbidden .error-fallback-card {
+  border-color: rgba(239, 68, 68, 0.3);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6),
+              0 0 30px -10px rgba(239, 68, 68, 0.2);
+}
+
+.error-fallback-wrapper.is-generic-error .error-glow-halo {
+  background: radial-gradient(circle, rgba(239, 68, 68, 0.25) 0%, rgba(236, 72, 153, 0.12) 50%, transparent 70%);
+}
+
+.error-fallback-wrapper.is-generic-error .error-fallback-card {
+  border-color: rgba(239, 68, 68, 0.25);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6),
+              0 0 30px -10px rgba(239, 68, 68, 0.2);
+}
+
+/* Icon Container */
+.error-icon-container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 96px;
+  padding: 16px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  margin-bottom: var(--space-lg);
+  border-radius: 50%;
+  background: rgba(22, 34, 56, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4);
+  transition: all var(--transition-normal);
+}
+
+/* Per-variant styling for icon container */
+.is-timeout .error-icon-container {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.35);
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.2), inset 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.is-not-found .error-icon-container {
+  background: rgba(167, 139, 250, 0.1);
+  border-color: rgba(167, 139, 250, 0.35);
+  box-shadow: 0 0 20px rgba(167, 139, 250, 0.2), inset 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.is-forbidden .error-icon-container {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.35);
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.2), inset 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.is-generic-error .error-icon-container {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.35);
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.2), inset 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.error-icon {
+  width: 100%;
+  height: 100%;
+  display: block;
+  color: var(--text-primary);
+  line-height: 1;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+  transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.is-timeout .error-icon {
+  color: #f59e0b;
+}
+
+.is-not-found .error-icon {
+  color: #a78bfa;
+}
+
+.is-forbidden .error-icon {
+  color: #f87171;
+}
+
+.is-generic-error .error-icon {
+  color: #f87171;
+}
+
+/* Status Pill */
+.error-status-pill {
+  display: inline-block;
+  padding: 0.25rem 0.85rem;
+  margin-bottom: var(--space-md);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+}
+
+.is-timeout .error-status-pill {
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.is-not-found .error-status-pill {
+  color: #c084fc;
+  background: rgba(192, 132, 252, 0.1);
+  border-color: rgba(192, 132, 252, 0.3);
+}
+
+.is-forbidden .error-status-pill {
+  color: #f87171;
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+.is-generic-error .error-status-pill {
+  color: #f87171;
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+/* Title & Text */
+.error-title {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  line-height: 1.25;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.error-message {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 520px;
+  margin-bottom: var(--space-xs);
+}
+
+.error-hint {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  max-width: 480px;
+  margin-bottom: var(--space-xl);
+}
+
+/* Actions Group */
+.error-actions-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+/* Base CTA Button */
+.error-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: 0.8rem 1.6rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+/* Primary CTA Button (Reload Page) */
+.error-cta-btn.primary-cta {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+}
+
+.error-cta-btn.primary-cta:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+}
+
+.error-cta-btn.primary-cta:active {
+  transform: translateY(0);
+}
+
+/* Secondary CTA Button (Retry Query) */
+.error-cta-btn.secondary-cta {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.error-cta-btn.secondary-cta:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+.error-cta-btn.secondary-cta:active {
+  transform: translateY(0);
+}
+
+.btn-icon {
+  font-size: 0.95rem;
+  transition: transform var(--transition-fast);
+}
+
+.error-cta-btn:hover .spin-on-hover {
+  transform: rotate(180deg);
+}
+
+/* Animations */
+@keyframes errorFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glowPulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.15);
+    opacity: 1;
+  }
+}
+
+.pulse {
+  animation: pulseIcon 2.5s infinite ease-in-out;
+}
+
+@keyframes pulseIcon {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+.bounce {
+  animation: bounceIcon 2s infinite ease-in-out;
+}
+
+@keyframes bounceIcon {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .error-fallback-card {
+    padding: var(--space-xl) var(--space-md);
+  }
+
+  .error-glow-halo {
+    top: calc(var(--space-xl) + 40px);
+    width: 180px;
+    height: 180px;
+  }
+
+  .error-title {
+    font-size: 1.4rem;
+  }
+
+  .error-message {
+    font-size: 0.95rem;
+  }
+
+  .error-icon-container {
+    width: 80px;
+    height: 80px;
+    padding: 13px;
+  }
+
+  .error-icon {
+    width: 100%;
+    height: 100%;
+  }
+
+  .error-actions-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .error-cta-btn {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .error-fallback-wrapper,
+  .error-glow-halo,
+  .pulse,
+  .bounce {
+    animation: none;
+    transform: none;
+  }
+}

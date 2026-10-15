@@ -1,0 +1,235 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  border-bottom: 1px solid var(--border-light);
+  /* The .glass-panel class is applied from index.css for the background */
+}
+
+.header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-sm) var(--space-lg);
+  height: var(--navbar-height, 72px);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+}
+
+.logo-container:hover {
+  transform: scale(1.02);
+}
+
+.brand-logo {
+  height: 40px;
+  width: auto;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+}
+
+.brand-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.brand-accent {
+  font-weight: 400;
+  color: var(--accent-primary);
+}
+
+.nav-links {
+  display: flex;
+  gap: var(--space-lg);
+  align-items: center;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color var(--transition-fast);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+}
+
+.nav-link:hover {
+  color: var(--text-primary);
+}
+
+.nav-link.active {
+  color: var(--accent-primary);
+}
+
+.nav-icon {
+  font-size: 1rem;
+}
+
+.action-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-lg);
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+  font-size: 1.1rem;
+}
+
+.action-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.action-btn.active {
+  color: var(--accent-primary);
+}
+
+.action-btn-primary {
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  background: rgba(236, 72, 153, 0.1);
+  color: var(--accent-tertiary);
+  gap: var(--space-xs);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 1px solid rgba(236, 72, 153, 0.2);
+}
+
+.action-btn-secondary {
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  background: rgba(241, 229, 235, 0.1);
+  color: var(--text-primary);
+  gap: var(--space-xs);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 1px solid rgba(241, 229, 235, 0.2);
+}
+
+.action-btn-primary:hover {
+  background: rgba(236, 72, 153, 0.2);
+  color: var(--accent-tertiary);
+}
+
+.action-btn-secondary:hover {
+  background: var(--text-primary);
+  color: rgb(14, 14, 14);
+}
+
+.action-btn-primary.active {
+  background: var(--accent-tertiary);
+  color: white;
+}
+
+.action-btn-secondary.active {
+  background: var(--text-primary);
+  color: rgb(14, 14, 14);
+}
+
+.btn-icon {
+  font-size: 1rem;
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: var(--space-xs);
+  z-index: 60;
+  transition: color var(--transition-fast);
+}
+
+.mobile-menu-btn:hover {
+  color: var(--accent-primary);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-links,
+  .action-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    padding: var(--space-md) 0;
+  }
+
+  .nav-links.mobile-open,
+  .action-links.mobile-open {
+    display: flex;
+  }
+
+  .header-container {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: var(--navbar-height, 72px);
+  }
+
+  .nav-link {
+    width: 100%;
+    justify-content: center;
+    padding: var(--space-md);
+    font-size: 1.1rem;
+  }
+
+  .action-links {
+    border-top: 1px solid var(--border-light);
+    gap: var(--space-md);
+    padding-top: var(--space-md);
+  }
+
+  .action-btn-primary {
+    width: 100%;
+    max-width: 200px;
+    justify-content: center;
+  }
+
+  .action-btn-secondary {
+    width: 100%;
+    max-width: 200px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .brand-name {
+    font-size: 1.1rem;
+  }
+
+  .header-container {
+    padding: var(--space-sm);
+  }
+}

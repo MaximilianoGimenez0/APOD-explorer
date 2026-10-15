@@ -1,0 +1,468 @@
+/* ==========================================================================
+   SurveyForm Component Styles - Dark Space Theme
+   ========================================================================== */
+
+.survey-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.survey-title {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-md);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  letter-spacing: 0.02em;
+}
+
+.survey-title::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  box-shadow: 0 0 8px var(--accent-primary);
+}
+
+.survey-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  width: 100%;
+}
+
+/* Form Groups & Layout */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  position: relative;
+}
+
+.name-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.name-input {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+/* Label & Error Row */
+.input-label-error {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.input-label-error label,
+.form-group > label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 2px;
+}
+
+.required-badge {
+  color: var(--accent-tertiary);
+  font-weight: 700;
+}
+
+/* Error Messages */
+.error {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #fb7185;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin: 0;
+  animation: surveyFadeIn var(--transition-fast) ease-out;
+}
+
+.error-icon {
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* Inputs, Select & Textarea Base Styles */
+.survey-form input[type="text"],
+.survey-form input[type="email"],
+.survey-form input[type="date"],
+.survey-form select,
+.survey-form textarea,
+.name-input input,
+.form-group input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(22, 34, 56, 0.6);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+}
+
+.survey-form input[type="text"]::placeholder,
+.survey-form input[type="email"]::placeholder,
+.survey-form textarea::placeholder,
+.name-input input::placeholder,
+.form-group input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.75;
+}
+
+.survey-form input[type="text"]:focus,
+.survey-form input[type="email"]:focus,
+.survey-form input[type="date"]:focus,
+.survey-form select:focus,
+.survey-form textarea:focus,
+.name-input input:focus,
+.form-group input:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  background: rgba(22, 34, 56, 0.9);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+}
+
+/* Error state for inputs */
+.survey-form input.input-has-error,
+.survey-form select.input-has-error,
+.survey-form textarea.input-has-error,
+.name-input input.input-has-error,
+.form-group input.input-has-error {
+  border-color: rgba(244, 63, 94, 0.8);
+  background: rgba(244, 63, 94, 0.05);
+  box-shadow: 0 0 0 2px rgba(244, 63, 94, 0.2);
+}
+
+/* Date picker customization for dark mode */
+.form-group input[type="date"] {
+  color-scheme: dark;
+}
+
+/* Select Dropdown Styling */
+.form-group select {
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+.form-group select option {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  padding: 0.5rem;
+}
+
+/* Textarea */
+.form-group textarea {
+  resize: vertical;
+  min-height: 90px;
+  line-height: 1.5;
+}
+
+/* Gender Radio Button Segmented Pills */
+.gender-options-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-sm);
+  margin-top: 0.25rem;
+}
+
+.gender-pill {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.65rem 0.75rem;
+  background: rgba(22, 34, 56, 0.5);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  user-select: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.gender-pill:hover {
+  background: rgba(22, 34, 56, 0.85);
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.gender-pill.selected {
+  background: rgba(59, 130, 246, 0.15);
+  border-color: var(--accent-primary);
+  color: #93c5fd;
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.2);
+}
+
+.gender-pill input[type="radio"] {
+  accent-color: var(--accent-primary);
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  cursor: pointer;
+}
+
+/* Form Action Buttons */
+.form-buttons {
+  display: flex;
+  gap: var(--space-md);
+  margin-top: var(--space-sm);
+  justify-content: flex-end;
+}
+
+.form-buttons button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border: 1px solid transparent;
+}
+
+.form-buttons button[type="submit"] {
+  flex: 1;
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.35);
+}
+
+.form-buttons button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5), 0 0 15px rgba(139, 92, 246, 0.3);
+}
+
+.form-buttons button[type="submit"]:active {
+  transform: translateY(0);
+}
+
+.form-buttons button[type="button"] {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--border-light);
+  color: var(--text-secondary);
+  min-width: 100px;
+}
+
+.form-buttons button[type="button"]:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.form-buttons button[type="button"]:active {
+  transform: translateY(0);
+}
+
+/* Success Modal Backdrop & Card */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(5, 8, 16, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  padding: var(--space-md);
+  animation: surveyFadeIn var(--transition-fast) ease-out;
+}
+
+.modal {
+  position: relative;
+  background: var(--bg-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl) var(--space-xl);
+  max-width: 440px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.9), var(--shadow-glow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+  animation: modalScaleUp var(--transition-normal) cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-close-icon-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-light);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  padding: 0;
+  font-size: 0.85rem;
+}
+
+.modal-close-icon-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--text-primary);
+  transform: scale(1.08);
+}
+
+.modal-icon-success {
+  font-size: 3.5rem;
+  color: #34d399;
+  filter: drop-shadow(0 0 16px rgba(52, 211, 153, 0.5));
+}
+
+.modal p {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.modal .modal-action-btn,
+.modal button:not(.modal-close-icon-btn) {
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  color: #ffffff;
+  padding: 0.75rem 2.25rem;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.35);
+  border: none;
+}
+
+.modal .modal-action-btn:hover,
+.modal button:not(.modal-close-icon-btn):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+}
+
+/* Loader Backdrop & Animated Spinner */
+.loader-backdrop {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(5, 8, 16, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-lg);
+  z-index: 99999;
+  animation: surveyFadeIn var(--transition-fast) ease-out;
+}
+
+.apod-spinner {
+  width: 52px;
+  height: 52px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top: 3px solid var(--accent-primary);
+  border-right: 3px solid var(--accent-secondary);
+  border-radius: 50%;
+  animation: surveySpin 0.9s linear infinite;
+  box-shadow: 0 0 25px rgba(59, 130, 246, 0.35);
+}
+
+.loader-backdrop p {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+/* Keyframe Animations */
+@keyframes surveySpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes surveyFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes modalScaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+  .name-container {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .gender-options-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xs);
+  }
+
+  .form-buttons {
+    flex-direction: column;
+  }
+
+  .form-buttons button {
+    width: 100%;
+  }
+
+  .modal {
+    padding: var(--space-xl) var(--space-md);
+  }
+}

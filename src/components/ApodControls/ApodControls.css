@@ -1,0 +1,55 @@
+.apod-controls-container {
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--radius-lg);
+  padding: var(--space-xs);
+  gap: var(--space-xs);
+  margin: var(--space-lg) 0;
+}
+
+.control-divider {
+  width: 1px;
+  height: 24px;
+  background: var(--surface-glass-border);
+}
+
+.control-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-lg);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: all var(--transition-fast);
+}
+
+.control-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.control-icon {
+  font-size: 1.2rem;
+  transition: transform var(--transition-fast);
+}
+
+.control-btn:hover .control-icon {
+  transform: scale(1.1);
+}
+
+.btn-liked {
+  color: var(--accent-tertiary);
+}
+
+.btn-liked:hover {
+  background: rgba(236, 72, 153, 0.15);
+}
+
+.btn-share {
+  color: var(--accent-primary);
+}
+
+.btn-share:hover {
+  background: rgba(59, 130, 246, 0.15);
+}
