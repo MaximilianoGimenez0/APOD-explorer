@@ -53,3 +53,37 @@
 .btn-share:hover {
   background: rgba(59, 130, 246, 0.15);
 }
+
+/* Responsive */
+@media (max-width: 640px) {
+  .apod-controls-container {
+    display: flex;
+    width: 100%;
+    max-width: 480px;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .control-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .apod-controls-container {
+    flex-direction: column;
+    padding: var(--space-sm);
+  }
+
+  .control-divider {
+    display: none;
+  }
+
+  .control-btn {
+    width: 100%;
+    padding: 0.6rem 1rem;
+  }
+}

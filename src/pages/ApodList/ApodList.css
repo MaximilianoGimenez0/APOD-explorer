@@ -129,6 +129,7 @@
   align-items: center;
   gap: var(--space-sm);
   padding-top: var(--space-xs);
+  flex-wrap: wrap;
 }
 
 .status-chip-group {
@@ -177,8 +178,10 @@
 }
 
 .gallery-item {
-  display: block;
+  display: flex;
+  flex-direction: column;
   height: 100%;
+  width: 100%;
 }
 
 /* Realistic Skeletons Matching ApodCard anatomy */
@@ -355,6 +358,21 @@
 @media (max-width: 640px) {
   .discover-main {
     padding: var(--space-xl) var(--space-md);
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  .discover-layout {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .discover-content {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
   }
 
   .discover-title {
@@ -362,6 +380,29 @@
   }
 
   .gallery-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    gap: var(--space-md);
+  }
+
+  .gallery-item {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 480px) {
+  .discover-title {
+    font-size: 1.75rem;
+  }
+
+  .discover-cosmic-glow {
+    width: 320px;
+    height: 320px;
+    filter: blur(80px);
   }
 }

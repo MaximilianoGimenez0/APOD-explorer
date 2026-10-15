@@ -444,6 +444,16 @@
 
 /* Responsive Media Queries */
 @media (max-width: 768px) {
+  .survey-form input[type="text"],
+  .survey-form input[type="email"],
+  .survey-form input[type="date"],
+  .survey-form select,
+  .survey-form textarea,
+  .name-input input,
+  .form-group input {
+    font-size: 1rem;
+  }
+
   .name-container {
     grid-template-columns: 1fr;
     gap: var(--space-md);
@@ -464,5 +474,21 @@
 
   .modal {
     padding: var(--space-xl) var(--space-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .modal {
+    width: 95%;
+    max-width: 360px;
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .modal-icon-success {
+    font-size: 2.8rem;
+  }
+
+  .modal p {
+    font-size: 1.1rem;
   }
 }

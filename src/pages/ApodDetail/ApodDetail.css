@@ -153,6 +153,10 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+  .detail-content-section {
+    padding: var(--space-2xl) 5%;
+  }
+
   .detail-title {
     font-size: 2.5rem;
   }
@@ -170,5 +174,28 @@
   .detail-explanation {
     font-size: 1.05rem;
     text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .detail-content-section {
+    padding: var(--space-xl) var(--space-md);
+  }
+
+  .detail-title {
+    font-size: 1.85rem;
+  }
+
+  .detail-date {
+    font-size: 1rem;
+  }
+
+  .detail-explanation {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .detail-media-section {
+    min-height: 280px;
   }
 }

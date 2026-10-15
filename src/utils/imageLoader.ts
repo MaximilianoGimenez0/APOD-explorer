@@ -5,17 +5,29 @@ import type React from "react";
  * and stop the shimmer animation on the parent container.
  */
 export function handleImageLoad(e: React.SyntheticEvent<HTMLImageElement>): void {
-  e.currentTarget.classList.add("loaded");
-  e.currentTarget.parentElement?.classList.add("loaded");
+  const img = e.currentTarget;
+  img.classList.add("loaded");
+  const container = img.closest(".shimmer-media-container") || img.parentElement;
+  container?.classList.add("loaded");
 }
 
 /**
- * Callback ref for images to handle already-cached images instantaneously
- * without waiting for an async onLoad event.
+ * Callback ref for images to handle already-cached or dynamically loaded images
+ * without waiting exclusively for React's async synthetic onLoad event.
  */
 export function handleImageRef(el: HTMLImageElement | null): void {
-  if (el && el.complete && el.naturalWidth > 0) {
+  if (!el) return;
+
+  const markLoaded = () => {
     el.classList.add("loaded");
-    el.parentElement?.classList.add("loaded");
+    const container = el.closest(".shimmer-media-container") || el.parentElement;
+    container?.classList.add("loaded");
+  };
+
+  if (el.complete && el.naturalWidth > 0) {
+    markLoaded();
+  } else {
+    el.addEventListener("load", markLoaded, { once: true });
+    el.addEventListener("error", markLoaded, { once: true });
   }
 }

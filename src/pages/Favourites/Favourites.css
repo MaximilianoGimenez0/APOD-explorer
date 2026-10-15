@@ -134,3 +134,17 @@
     padding: var(--space-xl) 5%;
   }
 }
+
+@media (max-width: 480px) {
+  .favourites-main {
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .favourites-title-group h1 {
+    font-size: 1.85rem;
+  }
+
+  .favourites-count-badge {
+    align-self: flex-start;
+  }
+}

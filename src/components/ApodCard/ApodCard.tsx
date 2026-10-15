@@ -3,9 +3,20 @@ import "./ApodCard.css";
 import { FaPlay, FaCalendarAlt, FaArrowRight, FaVideo, FaImage, FaUserAlt } from "react-icons/fa";
 import { handleImageLoad, handleImageRef } from "../../utils/imageLoader";
 
+const FALLBACK_IMAGE =
+  "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=800&q=80";
+
 export default function ApodCard({ apod }: { apod: Apod }) {
   const isVideo = apod.media_type === "video" || apod.media_type === "iframe";
   const author = apod.copyright || apod.credit;
+
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    const target = e.currentTarget;
+    if (target.src !== FALLBACK_IMAGE) {
+      target.src = FALLBACK_IMAGE;
+    }
+    handleImageLoad(e);
+  };
 
   return (
     <article className="apod-card-premium">
@@ -17,17 +28,16 @@ export default function ApodCard({ apod }: { apod: Apod }) {
             loading="lazy"
             ref={handleImageRef}
             onLoad={handleImageLoad}
-            onError={handleImageLoad}
+            onError={handleImageError}
           />
         ) : (
           <div className="apod-card-video">
             <img
-              src={apod.thumbnail_url || "https://images.unsplash.com/photo-1462331940025-496dfbfc7564"}
+              src={apod.thumbnail_url || FALLBACK_IMAGE}
               alt={apod.title}
-              style={{ opacity: 0.6 }}
               ref={handleImageRef}
               onLoad={handleImageLoad}
-              onError={handleImageLoad}
+              onError={handleImageError}
             />
             <div className="video-play-badge">
               <FaPlay className="video-icon" />

@@ -100,6 +100,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
 }
 
 .history-date {
@@ -142,7 +144,27 @@
     height: 200px;
   }
 
+  .history-entry-info {
+    padding: var(--space-md);
+  }
+
   .history-title {
     font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-node {
+    left: -1.25rem;
+    width: 0.85rem;
+    height: 0.85rem;
+  }
+
+  .history-title {
+    font-size: 1.15rem;
+  }
+
+  .history-description {
+    font-size: 0.9rem;
   }
 }

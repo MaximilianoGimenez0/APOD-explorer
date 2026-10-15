@@ -110,9 +110,11 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .language-selector {
-    margin: 1rem 0;
+    margin: var(--space-xs) 0;
+    width: 100%;
+    max-width: 200px;
   }
 
   .language-selector-btn {
@@ -125,5 +127,6 @@
     margin-top: 0.5rem;
     box-shadow: none;
     background: rgba(0, 0, 0, 0.2);
+    width: 100%;
   }
 }

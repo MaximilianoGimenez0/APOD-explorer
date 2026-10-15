@@ -154,7 +154,21 @@
     height: 200px;
   }
 
+  .fav-entry-info {
+    padding: var(--space-md);
+  }
+
   .fav-title {
     font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .fav-title {
+    font-size: 1.15rem;
+  }
+
+  .fav-description {
+    font-size: 0.9rem;
   }
 }

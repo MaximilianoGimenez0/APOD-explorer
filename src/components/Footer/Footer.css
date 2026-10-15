@@ -113,3 +113,17 @@
     gap: var(--space-xl);
   }
 }
+
+@media (max-width: 480px) {
+  .footer {
+    padding: var(--space-2xl) 0 0 0;
+  }
+
+  .footer-container {
+    padding: 0 var(--space-md);
+  }
+
+  .footer-bottom {
+    padding: var(--space-md);
+  }
+}

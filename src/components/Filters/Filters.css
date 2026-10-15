@@ -311,3 +311,20 @@
     margin-bottom: var(--space-lg);
   }
 }
+
+@media (max-width: 640px) {
+  .filters-sidebar {
+    padding: var(--space-lg) var(--space-md);
+  }
+}
+
+@media (max-width: 380px) {
+  .months-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .month-chip {
+    padding: 6px 1px;
+    font-size: 0.72rem;
+  }
+}

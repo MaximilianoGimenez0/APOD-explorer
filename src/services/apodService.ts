@@ -120,23 +120,30 @@ function cleanExplanation(text?: string): string {
  * - url: garantizado para <img src={apod.url}> (apunta a la imagen en vez de a la página HTML)
  * - permalink: enlace a la nota oficial en science.nasa.gov
  */
+function ensureHttps(url?: string): string {
+  if (!url) return "";
+  return url.replace(/^http:\/\//i, "https://");
+}
+
 export function normalizeApod(raw: any): Apod {
   if (!raw || typeof raw !== "object") {
     throw new ApodApiError("Respuesta de la NASA con formato inválido.");
   }
 
   const mediaType = (raw.media_type as "image" | "video" | "iframe") || "image";
-  const directAsset = raw.hdurl || raw.url || "";
+  const rawUrl = ensureHttps(raw.url || raw.hdurl || "");
+  const rawHdUrl = ensureHttps(raw.hdurl || raw.url || "");
+  const directAsset = rawHdUrl || rawUrl;
 
   return {
     title: cleanHtml(raw.title) || "NASA Astronomy Picture of the Day",
     explanation: cleanExplanation(raw.explanation),
-    url: mediaType === "image" ? directAsset : (raw.url || directAsset),
-    hdurl: raw.hdurl || raw.url,
+    url: mediaType === "image" ? directAsset : (rawUrl || directAsset),
+    hdurl: rawHdUrl || rawUrl,
     date: raw.date || "",
     media_type: mediaType,
-    thumbnail_url: raw.hdurl || raw.thumbnail_url || (mediaType === "image" ? directAsset : undefined),
-    permalink: raw.permalink || raw.url,
+    thumbnail_url: ensureHttps(raw.thumbnail_url) || (mediaType === "image" ? directAsset : undefined),
+    permalink: raw.permalink || rawUrl,
     credit: cleanHtml(raw.credit),
     copyright: cleanHtml(raw.copyright),
     alt: raw.alt ? cleanHtml(raw.alt) : undefined,

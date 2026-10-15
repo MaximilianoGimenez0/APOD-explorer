@@ -117,3 +117,22 @@
     padding: var(--space-xl) 5%;
   }
 }
+
+@media (max-width: 480px) {
+  .history-main {
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .history-title-group h1 {
+    font-size: 1.85rem;
+  }
+
+  .history-timeline {
+    padding-left: 1.25rem;
+  }
+
+  .btn-clear-history {
+    width: 100%;
+    justify-content: center;
+  }
+}

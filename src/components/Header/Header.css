@@ -225,11 +225,15 @@
 }
 
 @media (max-width: 640px) {
+  .brand-logo {
+    height: 34px;
+  }
+
   .brand-name {
     font-size: 1.1rem;
   }
 
   .header-container {
-    padding: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
   }
 }
