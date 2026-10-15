@@ -25,6 +25,8 @@ export const pages = {
   favourites: {
     title: "Your Stellar Collection",
     subtitle: "Your favorite astronomical discoveries saved forever.",
+    countSingular: "{count} saved",
+    countPlural: "{count} saved",
     emptyTitle: "No discoveries saved yet",
     emptyDesc: "Explore our astronomical gallery and save your favorite images to create your own personal cosmos collection.",
     startExploring: "Start Exploring"

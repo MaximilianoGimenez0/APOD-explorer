@@ -10,18 +10,20 @@ type FavouriteEntryProps = {
   apod: Apod;
   goToApodDetails(apod: Apod): void;
   onLikeChange?: () => void;
+  index?: number;
 };
 
 export default function FavouriteEntry({
   apod,
   goToApodDetails,
-  onLikeChange
+  onLikeChange,
+  index = 0
 }: FavouriteEntryProps) {
   const apodKey = apod.date + apod.title;
   const [liked, setLiked] = useState(isLiked(apodKey));
   const { t } = useTranslation();
 
-  const handleClick = (e: React.MouseEvent) => {
+  const handleLikeClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     addFavourite(apod);
     setLiked(isLiked(apodKey));
@@ -31,7 +33,11 @@ export default function FavouriteEntry({
   };
 
   return (
-    <div className="fav-entry-card" onClick={() => goToApodDetails(apod)}>
+    <div
+      className="fav-entry-card"
+      onClick={() => goToApodDetails(apod)}
+      style={{ animationDelay: `${index * 0.08}s` }}
+    >
       <div className="fav-entry-media shimmer-media-container">
         {apod.media_type === "image" ? (
           <img
@@ -44,28 +50,38 @@ export default function FavouriteEntry({
           />
         ) : (
           <div className="fav-video-placeholder">
-             <img
-               src={apod.thumbnail_url || "https://images.unsplash.com/photo-1462331940025-496dfbfc7564"}
-               alt={apod.title}
-               ref={handleImageRef}
-               onLoad={handleImageLoad}
-               onError={handleImageLoad}
-             />
-             <FaPlay className="fav-video-icon" />
+            <img
+              src={apod.thumbnail_url || "https://images.unsplash.com/photo-1462331940025-496dfbfc7564"}
+              alt={apod.title}
+              ref={handleImageRef}
+              onLoad={handleImageLoad}
+              onError={handleImageLoad}
+            />
+            <FaPlay className="fav-video-icon" />
           </div>
         )}
-        <div className="fav-entry-overlay"></div>
-        <button 
-          className={`fav-like-btn ${liked ? 'liked' : ''}`}
-          onClick={handleClick}
-          aria-label={liked ? t('components.apodControls.removeFromFavs') : t('components.apodControls.addToFavs')}
-        >
-          <FaHeart />
-        </button>
       </div>
-      <div className="fav-entry-content">
-        <span className="fav-entry-date">{apod.date}</span>
-        <h3 className="fav-entry-title">{apod.title}</h3>
+
+      <div className="fav-entry-info">
+        <div className="fav-meta">
+          <span className="fav-date">{apod.date}</span>
+          <button
+            className={`fav-like-btn ${liked ? "liked" : ""}`}
+            onClick={handleLikeClick}
+            aria-label={liked ? t("components.apodControls.removeFromFavs") : t("components.apodControls.addToFavs")}
+            title={liked ? t("components.apodControls.removeFromFavs") : t("components.apodControls.addToFavs")}
+          >
+            <FaHeart />
+          </button>
+        </div>
+
+        <h3 className="fav-title">{apod.title}</h3>
+
+        <p className="fav-description">
+          {apod.explanation && apod.explanation.length > 180
+            ? apod.explanation.slice(0, 180) + "..."
+            : apod.explanation}
+        </p>
       </div>
     </div>
   );

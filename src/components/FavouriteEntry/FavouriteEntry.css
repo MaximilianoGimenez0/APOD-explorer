@@ -1,25 +1,36 @@
 .fav-entry-card {
   position: relative;
   display: flex;
-  flex-direction: column;
   background: var(--bg-secondary);
-  border-radius: var(--radius-xl);
-  overflow: hidden;
   border: 1px solid var(--surface-glass-border);
-  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-normal);
   cursor: pointer;
+  animation: slideIn 0.5s ease-out backwards;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .fav-entry-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 16px 32px rgba(0,0,0,0.4);
-  border-color: rgba(236, 72, 153, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 .fav-entry-media {
+  flex: 0 0 250px;
   position: relative;
-  width: 100%;
-  aspect-ratio: 1/1;
   overflow: hidden;
 }
 
@@ -37,77 +48,40 @@
 .fav-video-placeholder {
   width: 100%;
   height: 100%;
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
-.fav-video-icon {
+.fav-video-placeholder img {
+  opacity: 0.5;
+}
+
+.fav-video-placeholder .fav-video-icon {
   position: absolute;
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: white;
   z-index: 2;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
 }
 
-.fav-entry-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to top, rgba(11, 19, 36, 1) 0%, transparent 60%);
-  pointer-events: none;
-}
-
-.fav-like-btn {
-  position: absolute;
-  top: var(--space-md);
-  right: var(--space-md);
-  z-index: 10;
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-full);
-  background: rgba(11, 19, 36, 0.6);
-  backdrop-filter: blur(4px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-primary);
-  font-size: 1.25rem;
-  transition: all var(--transition-fast);
-  border: 1px solid rgba(255,255,255,0.1);
-}
-
-.fav-like-btn:hover {
-  transform: scale(1.1);
-  background: rgba(11, 19, 36, 0.8);
-}
-
-.fav-like-btn.liked {
-  color: var(--accent-tertiary);
-  background: rgba(236, 72, 153, 0.1);
-  border-color: rgba(236, 72, 153, 0.3);
-}
-
-.fav-like-btn.liked:hover {
-  background: rgba(236, 72, 153, 0.2);
-}
-
-.fav-entry-content {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+.fav-entry-info {
+  flex: 1;
   padding: var(--space-lg);
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
-  z-index: 2;
+  gap: var(--space-sm);
+  min-width: 0;
 }
 
-.fav-entry-date {
+.fav-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fav-date {
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--accent-primary);
@@ -115,9 +89,72 @@
   text-transform: uppercase;
 }
 
-.fav-entry-title {
-  font-size: 1.25rem;
-  line-height: 1.3;
-  color: var(--text-primary);
+.fav-like-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background: rgba(11, 19, 36, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid var(--border-light);
+  color: var(--text-muted);
+  font-size: 1rem;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.fav-like-btn:hover {
+  transform: scale(1.1);
+  background: rgba(236, 72, 153, 0.15);
+  border-color: rgba(236, 72, 153, 0.3);
+  color: var(--accent-tertiary);
+}
+
+.fav-like-btn.liked {
+  color: var(--accent-tertiary);
+  background: rgba(236, 72, 153, 0.12);
+  border-color: rgba(236, 72, 153, 0.35);
+}
+
+.fav-like-btn.liked:hover {
+  background: rgba(236, 72, 153, 0.25);
+  transform: scale(1.15);
+}
+
+.fav-title {
+  font-size: 1.5rem;
   margin: 0;
+  color: var(--text-primary);
+  line-height: 1.3;
+  transition: color var(--transition-fast);
+}
+
+.fav-entry-card:hover .fav-title {
+  color: var(--accent-primary);
+}
+
+.fav-description {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .fav-entry-card {
+    flex-direction: column;
+  }
+
+  .fav-entry-media {
+    flex: none;
+    height: 200px;
+  }
+
+  .fav-title {
+    font-size: 1.25rem;
+  }
 }

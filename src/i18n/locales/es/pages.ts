@@ -25,6 +25,8 @@ export const pages = {
   favourites: {
     title: "Tu Colección Estelar",
     subtitle: "Tus descubrimientos astronómicos favoritos guardados para siempre.",
+    countSingular: "{count} guardado",
+    countPlural: "{count} guardados",
     emptyTitle: "Aún no hay descubrimientos guardados",
     emptyDesc: "Explora nuestra galería astronómica y guarda tus imágenes favoritas para crear tu propia colección personal del cosmos.",
     startExploring: "Iniciar Exploración"

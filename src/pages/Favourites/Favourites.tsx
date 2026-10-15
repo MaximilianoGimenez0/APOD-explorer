@@ -27,9 +27,22 @@ export default function Favourites() {
   return (
     <div className="favourites-page">
       <div className="favourites-main">
-        <div className="favourites-header">
-          <h1>{t('pages.favourites.title')}</h1>
-          <p>{t('pages.favourites.subtitle')}</p>
+        <div className="favourites-header-section">
+          <div className="favourites-title-group">
+            <h1>{t('pages.favourites.title')}</h1>
+            <p>{t('pages.favourites.subtitle')}</p>
+          </div>
+
+          {apods.length > 0 && (
+            <div className="favourites-count-badge">
+              <FaHeart className="badge-heart-icon" />
+              <span>
+                {apods.length === 1
+                  ? t('pages.favourites.countSingular', { count: apods.length })
+                  : t('pages.favourites.countPlural', { count: apods.length })}
+              </span>
+            </div>
+          )}
         </div>
 
         {apods.length === 0 ? (
@@ -46,13 +59,14 @@ export default function Favourites() {
             </button>
           </div>
         ) : (
-          <div className="favourites-gallery">
-            {apods.map((apod) => (
+          <div className="favourites-list">
+            {apods.map((apod, index) => (
               <FavouriteEntry
-                key={apod.date + apod.title}
+                key={apod.date + apod.title + index}
                 goToApodDetails={goToApodDetails}
                 apod={apod}
                 onLikeChange={handleLikeChange}
+                index={index}
               />
             ))}
           </div>
