@@ -13,6 +13,17 @@ export default function Filters({ onRandom, onFiltered }: FiltersProps) {
   const [month, setEnd] = useState(6);
   const { t } = useTranslation();
 
+  const currentYear = new Date().getFullYear();
+  const currentMonth = new Date().getMonth() + 1;
+  const maxMonth = year >= currentYear ? currentMonth : 12;
+
+  const handleYearChange = (newYear: number) => {
+    setStart(newYear);
+    if (newYear >= currentYear && month > currentMonth) {
+      setEnd(currentMonth);
+    }
+  };
+
   return (
     <div className="filters-sidebar glass-panel">
       <div className="filters-header">
@@ -30,9 +41,9 @@ export default function Filters({ onRandom, onFiltered }: FiltersProps) {
             className="filter-slider"
             type="range"
             min={1996}
-            max={new Date().getFullYear()}
+            max={currentYear}
             value={year}
-            onChange={(e) => setStart(Number(e.target.value))}
+            onChange={(e) => handleYearChange(Number(e.target.value))}
           />
         </div>
 
@@ -45,7 +56,7 @@ export default function Filters({ onRandom, onFiltered }: FiltersProps) {
             className="filter-slider"
             type="range"
             min={1}
-            max={12}
+            max={maxMonth}
             value={month}
             onChange={(e) => setEnd(Number(e.target.value))}
           />

@@ -107,6 +107,7 @@
   justify-content: center;
   gap: var(--space-lg);
   margin-bottom: var(--space-sm);
+  flex-wrap: wrap;
 }
 
 .detail-date {
@@ -114,16 +115,21 @@
   align-items: center;
   gap: var(--space-xs);
   color: var(--accent-primary);
-  font-weight: 600;
+  font-size: 1.15rem;
+  font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .detail-copyright {
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   padding-left: var(--space-lg);
   border-left: 1px solid var(--border-light);
+  line-height: 1.4;
+  word-break: break-word;
 }
 
 .detail-title {

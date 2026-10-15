@@ -4,7 +4,13 @@ export interface Apod {
   url: string;
   hdurl?: string;
   date: string;
-  media_type: "image" | "video";
+  media_type: "image" | "video" | "iframe";
   thumbnail_url?: string;
-  requestedAt?: Date
+  permalink?: string;
+  credit?: string;
+  copyright?: string;
+  alt?: string;
+  post_id?: number;
+  basic_html_url?: string;
+  requestedAt?: Date;
 }
