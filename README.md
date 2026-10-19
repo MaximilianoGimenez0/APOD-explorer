@@ -1,4 +1,4 @@
-# 🛰️ APOD Explorer
+# APOD Explorer
 
 > Explorador web interactivo del archivo Astronomy Picture of the Day (APOD) de la NASA, con ingesta asíncrona resiliente, filtrado cronológico dinámico, colección offline y geolocalización interactiva.
 
@@ -13,7 +13,7 @@
 
 ---
 
-## 🔭 Características Principales
+## Características Principales
 
 * **🌌 Imagen del Día y Exploración Aleatoria:** Consulta de la foto astronómica diaria y eventos aleatorios con imágenes y videos.
 * **🎛️ Búsqueda y Filtrado Temporal:** Navegación por el archivo histórico de la NASA desde 1996 hasta la actualidad, con filtros por año y mes.
@@ -26,7 +26,7 @@
 
 ---
 
-## 🔄 Flujo de Datos
+## Flujo de Datos
 
 ```mermaid
 flowchart TD
@@ -62,7 +62,7 @@ flowchart TD
 
 ---
 
-## 💻 Puesta en Marcha
+## Puesta en Marcha
 
 ### Requisitos Previos
 * **Node.js:** Versión 18+ (LTS recomendada)
@@ -88,7 +88,7 @@ npm run dev
 
 La aplicación quedará disponible en `http://localhost:5173`.
 
-> **Nota sobre variables de entorno:** Configura `VITE_API_KEY=DEMO_KEY` en tu `.env` para pruebas rápidas. Las credenciales de EmailJS son opcionales si no se requiere el despacho real del formulario de contacto.
+> **Nota sobre variables de entorno:** Configurá `VITE_API_KEY=DEMO_KEY` en tu `.env` para pruebas rápidas. Las credenciales de EmailJS son opcionales si no se requiere el despacho real del formulario de contacto.
 
 ### Scripts Disponibles
 
@@ -101,7 +101,7 @@ npm run preview  # Previsualiza localmente el empaquetado de producción
 
 ---
 
-## ⚙️ Stack Tecnológico
+## Stack Tecnológico
 
 * **Frontend & UI:** React 19, TypeScript ~5.8, React Router v7, React Icons.
 * **Cartografía & APIs:** Leaflet 1.9, React Leaflet, NASA APOD REST API.
@@ -111,7 +111,7 @@ npm run preview  # Previsualiza localmente el empaquetado de producción
 
 ---
 
-## 👨💻 Autor & Contacto
+## Autor & Contacto
 
 * **Maximiliano Giménez**
 * **Portfolio:** [maxigimenez.com.ar](https://maxigimenez.com.ar)
