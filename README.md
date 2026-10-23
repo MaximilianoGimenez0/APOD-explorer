@@ -15,14 +15,14 @@
 
 ## Características Principales
 
-* **🌌 Imagen del Día y Exploración Aleatoria:** Consulta de la foto astronómica diaria y eventos aleatorios con imágenes y videos.
-* **🎛️ Búsqueda y Filtrado Temporal:** Navegación por el archivo histórico de la NASA desde 1996 hasta la actualidad, con filtros por año y mes.
-* **🛡️ Tolerancia a Fallos y Manejo de Errores:** Control de demoras o caídas en la respuesta de la NASA con pantallas de aviso claras y reintento de conexión inmediato.
-* **⭐ Colección de Favoritos:** Almacenamiento local de publicaciones destacadas directamente en el navegador, disponible sin necesidad de registro ni inicio de sesión.
-* **📜 Historial Cronológico de Navegación:** Registro de las imágenes consultadas con fecha y hora de visita, junto con la opción de limpiar los datos en cualquier momento.
-* **💬 Soporte Multilenguaje:** Experiencia adaptada a tres idiomas: Español, Inglés y Portugués.
-* **🗺️ Mapa Interactivo:** Visualización geográfica de la sede de la universidad (UNAJ), adaptable a diferentes resoluciones y dispositivos.
-* **📝 Formulario de Contacto y Valoración:** Envío directo de mensajes, sugerencias y valoraciones sobre la aplicación mediante un formulario integrado.
+* **Imagen del Día y Exploración Aleatoria:** Consulta de la foto astronómica diaria y eventos aleatorios con imágenes y videos.
+* **Búsqueda y Filtrado Temporal:** Navegación por el archivo histórico de la NASA desde 1996 hasta la actualidad, con filtros por año y mes.
+* **Tolerancia a Fallos y Manejo de Errores:** Control de demoras o caídas en la respuesta de la NASA con pantallas de aviso claras y reintento de conexión inmediato.
+* **Colección de Favoritos:** Almacenamiento local de publicaciones destacadas directamente en el navegador, disponible sin necesidad de registro ni inicio de sesión.
+* **Historial Cronológico de Navegación:** Registro de las imágenes consultadas con fecha y hora de visita, junto con la opción de limpiar los datos en cualquier momento.
+* **Soporte Multilenguaje:** Experiencia adaptada a tres idiomas: Español, Inglés y Portugués.
+* **Mapa Interactivo:** Visualización geográfica de la sede de la universidad (UNAJ), adaptable a diferentes resoluciones y dispositivos.
+* **Formulario de Contacto y Valoración:** Envío directo de mensajes, sugerencias y valoraciones sobre la aplicación mediante un formulario integrado.
 
 ---
 
