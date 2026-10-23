@@ -1,7 +1,3 @@
-/* ==========================================================================
-   SurveyForm Component Styles - Dark Space Theme
-   ========================================================================== */
-
 .survey-container {
   width: 100%;
   display: flex;
@@ -36,7 +32,6 @@
   width: 100%;
 }
 
-/* Form Groups & Layout */
 .form-group {
   display: flex;
   flex-direction: column;
@@ -56,7 +51,6 @@
   gap: var(--space-xs);
 }
 
-/* Label & Error Row */
 .input-label-error {
   display: flex;
   justify-content: space-between;
@@ -81,7 +75,6 @@
   font-weight: 700;
 }
 
-/* Error Messages */
 .error {
   display: inline-flex;
   align-items: center;
@@ -98,7 +91,6 @@
   flex-shrink: 0;
 }
 
-/* Inputs, Select & Textarea Base Styles */
 .survey-form input[type="text"],
 .survey-form input[type="email"],
 .survey-form input[type="date"],
@@ -139,7 +131,6 @@
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
 }
 
-/* Error state for inputs */
 .survey-form input.input-has-error,
 .survey-form select.input-has-error,
 .survey-form textarea.input-has-error,
@@ -150,12 +141,10 @@
   box-shadow: 0 0 0 2px rgba(244, 63, 94, 0.2);
 }
 
-/* Date picker customization for dark mode */
 .form-group input[type="date"] {
   color-scheme: dark;
 }
 
-/* Select Dropdown Styling */
 .form-group select {
   cursor: pointer;
   appearance: none;
@@ -172,14 +161,12 @@
   padding: 0.5rem;
 }
 
-/* Textarea */
 .form-group textarea {
   resize: vertical;
   min-height: 90px;
   line-height: 1.5;
 }
 
-/* Gender Radio Button Segmented Pills */
 .gender-options-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -227,7 +214,6 @@
   cursor: pointer;
 }
 
-/* Form Action Buttons */
 .form-buttons {
   display: flex;
   gap: var(--space-md);
@@ -283,7 +269,6 @@
   transform: translateY(0);
 }
 
-/* Success Modal Backdrop & Card */
 .modal-backdrop {
   position: fixed;
   inset: 0;
@@ -376,7 +361,6 @@
   box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
 }
 
-/* Loader Backdrop & Animated Spinner */
 .loader-backdrop {
   position: fixed;
   inset: 0;
@@ -413,7 +397,6 @@
   margin: 0;
 }
 
-/* Keyframe Animations */
 @keyframes surveySpin {
   to {
     transform: rotate(360deg);
@@ -442,7 +425,6 @@
   }
 }
 
-/* Responsive Media Queries */
 @media (max-width: 768px) {
   .survey-form input[type="text"],
   .survey-form input[type="email"],

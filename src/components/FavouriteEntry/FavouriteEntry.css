@@ -143,7 +143,6 @@
   margin: 0;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .fav-entry-card {
     flex-direction: column;

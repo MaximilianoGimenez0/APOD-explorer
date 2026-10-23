@@ -1,8 +1,3 @@
-/* ==========================================================================
-   ErrorFallback Component Styles
-   Adapts to content container with a cosmic glassmorphic aesthetic
-   ========================================================================== */
-
 .error-fallback-wrapper {
   display: flex;
   align-items: center;
@@ -34,7 +29,6 @@
   transition: transform var(--transition-normal), box-shadow var(--transition-normal);
 }
 
-/* Background ambient glow halo centered behind the icon */
 .error-glow-halo {
   position: absolute;
   top: calc(var(--space-2xl) + 48px);
@@ -50,7 +44,6 @@
   z-index: 0;
 }
 
-/* Specific glows based on error variant */
 .error-fallback-wrapper.is-timeout .error-glow-halo {
   background: radial-gradient(circle, rgba(245, 158, 11, 0.25) 0%, rgba(239, 68, 68, 0.12) 50%, transparent 70%);
 }
@@ -91,7 +84,6 @@
               0 0 30px -10px rgba(239, 68, 68, 0.2);
 }
 
-/* Icon Container */
 .error-icon-container {
   position: relative;
   z-index: 1;
@@ -111,7 +103,6 @@
   transition: all var(--transition-normal);
 }
 
-/* Per-variant styling for icon container */
 .is-timeout .error-icon-container {
   background: rgba(245, 158, 11, 0.1);
   border-color: rgba(245, 158, 11, 0.35);
@@ -162,7 +153,6 @@
   color: #f87171;
 }
 
-/* Status Pill */
 .error-status-pill {
   display: inline-block;
   padding: 0.25rem 0.85rem;
@@ -202,7 +192,6 @@
   border-color: rgba(239, 68, 68, 0.3);
 }
 
-/* Title & Text */
 .error-title {
   font-family: var(--font-heading);
   font-size: 1.75rem;
@@ -226,7 +215,6 @@
   margin-bottom: var(--space-xl);
 }
 
-/* Actions Group */
 .error-actions-group {
   display: flex;
   align-items: center;
@@ -236,7 +224,6 @@
   width: 100%;
 }
 
-/* Base CTA Button */
 .error-cta-btn {
   display: inline-flex;
   align-items: center;
@@ -252,7 +239,6 @@
   text-decoration: none;
 }
 
-/* Primary CTA Button (Reload Page) */
 .error-cta-btn.primary-cta {
   background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
   color: #ffffff;
@@ -270,7 +256,6 @@
   transform: translateY(0);
 }
 
-/* Secondary CTA Button (Retry Query) */
 .error-cta-btn.secondary-cta {
   background: rgba(255, 255, 255, 0.05);
   color: var(--text-primary);
@@ -296,7 +281,6 @@
   transform: rotate(180deg);
 }
 
-/* Animations */
 @keyframes errorFadeIn {
   from {
     opacity: 0;
@@ -345,7 +329,6 @@
   }
 }
 
-/* Responsive adjustments */
 @media (max-width: 640px) {
   .error-fallback-card {
     padding: var(--space-xl) var(--space-md);

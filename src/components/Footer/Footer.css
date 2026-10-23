@@ -106,7 +106,6 @@
   margin: 0;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .footer-container {
     flex-direction: column;

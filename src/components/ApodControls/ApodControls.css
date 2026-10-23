@@ -54,7 +54,6 @@
   background: rgba(59, 130, 246, 0.15);
 }
 
-/* Responsive */
 @media (max-width: 640px) {
   .apod-controls-container {
     display: flex;

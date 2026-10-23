@@ -7,7 +7,6 @@
   overflow-x: hidden;
 }
 
-/* Ambient Cosmic Background Lighting */
 .discover-cosmic-glow {
   position: absolute;
   width: 600px;
@@ -60,7 +59,6 @@
   min-width: 0;
 }
 
-/* Header & Context Bar */
 .discover-header {
   display: flex;
   flex-direction: column;
@@ -88,7 +86,6 @@
   margin: 0;
 }
 
-/* Mobile Filter Toggle Button (hidden on desktop) */
 .mobile-filter-toggle {
   display: none;
   align-items: center;
@@ -123,7 +120,6 @@
   color: #fff;
 }
 
-/* Context Status Bar */
 .discover-status-bar {
   display: flex;
   align-items: center;
@@ -170,7 +166,6 @@
   font-weight: 500;
 }
 
-/* Gallery Grid */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
@@ -184,7 +179,6 @@
   width: 100%;
 }
 
-/* Realistic Skeletons Matching ApodCard anatomy */
 .skeleton-card {
   display: flex;
   flex-direction: column;
@@ -288,7 +282,6 @@
   }
 }
 
-/* Empty State */
 .discover-empty-state {
   display: flex;
   flex-direction: column;
@@ -327,7 +320,6 @@
   margin: 0;
 }
 
-/* Responsive Layout */
 @media (max-width: 1024px) {
   .mobile-filter-toggle {
     display: inline-flex;

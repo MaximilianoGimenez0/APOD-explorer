@@ -1,12 +1,9 @@
-/* Home Page Styles */
-
 .main-content {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-/* Home Error Fallback Wrapper */
 .home-error-wrapper {
   min-height: calc(100vh - var(--navbar-height, 72px));
   min-height: calc(100dvh - var(--navbar-height, 72px));
@@ -17,7 +14,6 @@
   width: 100%;
 }
 
-/* Hero Section */
 .hero-section {
   position: relative;
   width: 100%;
@@ -176,7 +172,6 @@
   color: var(--accent-primary-hover);
 }
 
-/* Discovery Section */
 .discovery-section {
   padding: var(--space-3xl) 10%;
   background: var(--bg-primary);
@@ -290,7 +285,6 @@
   animation: shimmer 2s infinite ease-in-out;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .hero-content {
     padding: var(--space-xl) 5%;

@@ -55,7 +55,6 @@
   color: white;
 }
 
-/* Empty State */
 .history-empty {
   display: flex;
   flex-direction: column;
@@ -82,7 +81,6 @@
   margin-bottom: var(--space-xl);
 }
 
-/* Timeline Container */
 .history-timeline {
   position: relative;
   display: flex;
@@ -101,7 +99,6 @@
   background: linear-gradient(to bottom, var(--accent-primary), var(--bg-tertiary));
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .history-header-section {
     flex-direction: column;

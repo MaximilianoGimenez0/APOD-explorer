@@ -133,7 +133,6 @@
   margin: 0;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .history-entry-content {
     flex-direction: column;

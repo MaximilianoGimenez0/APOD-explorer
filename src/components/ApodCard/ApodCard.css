@@ -25,7 +25,7 @@
   position: relative;
   width: 100%;
   height: 0;
-  padding-bottom: 60%; /* 16:10 aspect ratio */
+  padding-bottom: 60%;
   overflow: hidden;
   flex-shrink: 0;
   background: var(--bg-tertiary);
@@ -105,7 +105,6 @@
   pointer-events: none;
 }
 
-/* Floating Glass Badges */
 .apod-media-badges {
   position: absolute;
   top: var(--space-sm);
@@ -221,7 +220,6 @@
   word-break: break-word;
 }
 
-/* Card Footer with Author and Interactive Arrow */
 .apod-card-footer {
   display: flex;
   align-items: center;
@@ -289,13 +287,12 @@
   transform: translateX(1px);
 }
 
-/* Responsive */
 @media (max-width: 640px) {
   .apod-card-content {
     padding: var(--space-md);
   }
 
   .apod-card-media {
-    padding-bottom: 56.25%; /* 16:9 on mobile */
+    padding-bottom: 56.25%;
   }
 }

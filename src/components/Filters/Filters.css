@@ -32,7 +32,6 @@
   letter-spacing: -0.01em;
 }
 
-/* Mode Switch Tabs */
 .filters-mode-tabs {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -150,7 +149,6 @@
   font-size: 0.9rem;
 }
 
-/* Slider with active track gradient */
 .slider-container {
   display: flex;
   flex-direction: column;
@@ -192,7 +190,6 @@
   color: var(--text-muted);
 }
 
-/* Months Grid (3x4) */
 .months-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -233,7 +230,6 @@
   pointer-events: none;
 }
 
-/* Buttons */
 .btn-filter {
   display: flex;
   align-items: center;
@@ -304,7 +300,6 @@
   }
 }
 
-/* Responsive */
 @media (max-width: 1024px) {
   .filters-sidebar {
     position: static;
