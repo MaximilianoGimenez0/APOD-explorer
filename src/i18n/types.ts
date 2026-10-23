@@ -15,3 +15,7 @@ export type PathKeys<T> = T extends object
   : "";
 
 export type TranslationKey = PathKeys<typeof es>;
+
+export type MonthNumber = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+
+export const getMonthKey = (month: number): TranslationKey => `common.months.${month as MonthNumber}`;

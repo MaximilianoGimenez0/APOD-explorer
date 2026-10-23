@@ -9,7 +9,7 @@ import {
   FaSpinner,
   FaSlidersH,
 } from "react-icons/fa";
-import { useTranslation } from "../../i18n";
+import { useTranslation, getMonthKey } from "../../i18n";
 
 type FiltersProps = {
   onRandom: () => void;
@@ -148,7 +148,7 @@ export default function Filters({
             <div className="filter-label-row">
               <span className="filter-label">{t("components.filters.month")}</span>
               <span className="filter-value month-name">
-                {t(`common.months.${month}` as any)}
+                {t(getMonthKey(month))}
               </span>
             </div>
 
@@ -156,7 +156,7 @@ export default function Filters({
               {Array.from({ length: 12 }, (_, i) => i + 1).map((m) => {
                 const isSelected = month === m;
                 const isDisabled = year >= currentYear && m > currentMonth;
-                const monthFullName = t(`common.months.${m}` as any);
+                const monthFullName = t(getMonthKey(m));
                 const shortName = monthFullName.slice(0, 3);
 
                 return (

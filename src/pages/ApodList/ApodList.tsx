@@ -11,7 +11,7 @@ import ErrorFallback from "../../components/ErrorFallback/ErrorFallback";
 import "./ApodList.css";
 import { useNavigate } from "react-router";
 import { FaCalendarAlt, FaRandom, FaSlidersH, FaCompass } from "react-icons/fa";
-import { useTranslation } from "../../i18n";
+import { useTranslation, getMonthKey } from "../../i18n";
 
 interface ErrorState {
   message: string;
@@ -150,7 +150,7 @@ export default function ApodList() {
                   <span>{mobileFiltersOpen ? "Cerrar Filtros" : "Filtros"}</span>
                   {lastQuery.type === "filtered" && lastQuery.month && (
                     <span className="mobile-filter-badge">
-                      {t(`common.months.${lastQuery.month}` as any).slice(0, 3)} {lastQuery.year}
+                      {t(getMonthKey(lastQuery.month)).slice(0, 3)} {lastQuery.year}
                     </span>
                   )}
                 </button>
@@ -161,7 +161,7 @@ export default function ApodList() {
                   {lastQuery.type === "filtered" && lastQuery.month ? (
                     <span className="status-chip date-chip">
                       <FaCalendarAlt className="chip-icon" />
-                      {t(`common.months.${lastQuery.month}` as any)} {lastQuery.year}
+                      {t(getMonthKey(lastQuery.month))} {lastQuery.year}
                     </span>
                   ) : (
                     <span className="status-chip random-chip">
