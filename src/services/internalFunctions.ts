@@ -37,7 +37,7 @@ export function addHistory(apod: Apod) {
   const apodKey = apod.date + apod.title;
   
   const stored = localStorage.getItem("history");
-  let cached: Apod[] = stored ? JSON.parse(stored) : [];
+  const cached: Apod[] = stored ? JSON.parse(stored) : [];
 
   const exists = cached.some(a => a.date + a.title === apodKey);
 

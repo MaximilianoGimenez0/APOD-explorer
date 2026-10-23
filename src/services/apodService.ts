@@ -118,34 +118,51 @@ function ensureHttps(url?: string): string {
   return url.replace(/^http:\/\//i, "https://");
 }
 
+interface RawApod {
+  media_type?: string;
+  url?: string;
+  hdurl?: string;
+  title?: string;
+  explanation?: string;
+  date?: string;
+  thumbnail_url?: string;
+  permalink?: string;
+  credit?: string;
+  copyright?: string;
+  alt?: string;
+  post_id?: string | number;
+  basic_html_url?: string;
+}
+
 /**
  * Normalizes NASA WordPress endpoint responses (science.nasa.gov/wp-json/wp/v2/apod-basic/)
  * into the internal Apod model, mapping direct asset URLs instead of HTML article pages.
  */
-export function normalizeApod(raw: any): Apod {
+export function normalizeApod(raw: unknown): Apod {
   if (!raw || typeof raw !== "object") {
     throw new ApodApiError("Respuesta de la NASA con formato inválido.");
   }
 
-  const mediaType = (raw.media_type as "image" | "video" | "iframe") || "image";
-  const rawUrl = ensureHttps(raw.url || raw.hdurl || "");
-  const rawHdUrl = ensureHttps(raw.hdurl || raw.url || "");
+  const rawItem = raw as RawApod;
+  const mediaType = (rawItem.media_type as "image" | "video" | "iframe") || "image";
+  const rawUrl = ensureHttps(rawItem.url || rawItem.hdurl || "");
+  const rawHdUrl = ensureHttps(rawItem.hdurl || rawItem.url || "");
   const directAsset = rawHdUrl || rawUrl;
 
   return {
-    title: cleanHtml(raw.title) || "NASA Astronomy Picture of the Day",
-    explanation: cleanExplanation(raw.explanation),
+    title: cleanHtml(rawItem.title) || "NASA Astronomy Picture of the Day",
+    explanation: cleanExplanation(rawItem.explanation),
     url: mediaType === "image" ? directAsset : (rawUrl || directAsset),
     hdurl: rawHdUrl || rawUrl,
-    date: raw.date || "",
+    date: rawItem.date || "",
     media_type: mediaType,
-    thumbnail_url: ensureHttps(raw.thumbnail_url) || (mediaType === "image" ? directAsset : undefined),
-    permalink: raw.permalink || rawUrl,
-    credit: cleanHtml(raw.credit),
-    copyright: cleanHtml(raw.copyright),
-    alt: raw.alt ? cleanHtml(raw.alt) : undefined,
-    post_id: raw.post_id,
-    basic_html_url: raw.basic_html_url,
+    thumbnail_url: ensureHttps(rawItem.thumbnail_url) || (mediaType === "image" ? directAsset : undefined),
+    permalink: rawItem.permalink || rawUrl,
+    credit: cleanHtml(rawItem.credit),
+    copyright: cleanHtml(rawItem.copyright),
+    alt: rawItem.alt ? cleanHtml(rawItem.alt) : undefined,
+    post_id: typeof rawItem.post_id === "number" ? rawItem.post_id : (rawItem.post_id ? Number(rawItem.post_id) || undefined : undefined),
+    basic_html_url: rawItem.basic_html_url,
   };
 }
 
@@ -194,7 +211,7 @@ export async function getFilteredApodImages(
   };
 
   const p1Data = await fetchPage(1);
-  let rawList: any[] = Array.isArray(p1Data) ? p1Data : [p1Data];
+  let rawList: unknown[] = Array.isArray(p1Data) ? p1Data : [p1Data];
 
   // NASA WordPress endpoint caps at 25 items per page, requiring page 2 for months with more days
   if (rawList.length === 25 && finalEndDay > 25) {
