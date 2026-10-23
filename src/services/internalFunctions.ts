@@ -1,6 +1,5 @@
 import type { Apod } from "../models/Apod";
 
-//Agregar un apod a favoritos o sacarlo si ya existe
 export function addFavourite(apod: Apod) {
   const apodKey = apod.date + apod.title;
 
@@ -18,7 +17,6 @@ export function addFavourite(apod: Apod) {
   localStorage.setItem("favourites", JSON.stringify(cached));
 }
 
-//Compartir un apod con mailto
 export function share(apod: Apod) {
   const email = "";
   const subject = `Mirá este APOD: ${apod.title}`;
@@ -35,9 +33,8 @@ export function share(apod: Apod) {
   window.open(mailtoLink);
 }
 
-//Agregar un apod al historial o sacarlo si ya existe
 export function addHistory(apod: Apod) {
- const apodKey = apod.date + apod.title;
+  const apodKey = apod.date + apod.title;
   
   const stored = localStorage.getItem("history");
   let cached: Apod[] = stored ? JSON.parse(stored) : [];
@@ -50,10 +47,8 @@ export function addHistory(apod: Apod) {
   }
 
   localStorage.setItem("history", JSON.stringify(cached));
-
 }
 
-//Limpiar historial
 export function cleanHistory(){
   localStorage.removeItem('history');
 }

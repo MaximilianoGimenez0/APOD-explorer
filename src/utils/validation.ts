@@ -1,8 +1,3 @@
-/**
- * Módulo de validaciones reutilizables y desacopladas para formularios.
- * Centraliza reglas de negocio, expresiones regulares y orquestadores de validación.
- */
-
 import type { TranslationKey } from "../i18n/types";
 
 export interface SurveyFormData {
@@ -31,42 +26,26 @@ export type SurveyErrorKey =
 
 export type TranslatorFn = (key: TranslationKey) => string;
 
-/**
- * Reglas de validación y expresiones regulares estándar
- */
 export const VALIDATION_REGEX = {
-  // Acepta solo letras (mayúsculas, minúsculas), tildes, diéresis, eñes y espacios
   LETTERS_ONLY: /^[A-Za-zÁÉÍÓÚáéíóúÜüÑñ\s]+$/,
-  // Formato estándar de email (RFC 5322 simplificado)
+  // Simplified email pattern avoiding strict RFC 5322 complexity
   EMAIL: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
 } as const;
 
-/**
- * Comprueba si un valor es nulo, indefinido o solo espacios en blanco.
- */
 export function isEmpty(value: string | undefined | null): boolean {
   return value === undefined || value === null || value.trim().length === 0;
 }
 
-/**
- * Valida si una cadena contiene únicamente caracteres alfabéticos y espacios.
- */
 export function isValidLettersOnly(value: string): boolean {
   if (isEmpty(value)) return false;
   return VALIDATION_REGEX.LETTERS_ONLY.test(value.trim());
 }
 
-/**
- * Valida si una cadena tiene formato de email válido.
- */
 export function isValidEmail(value: string): boolean {
   if (isEmpty(value)) return false;
   return VALIDATION_REGEX.EMAIL.test(value.trim());
 }
 
-/**
- * Valida si una fecha es válida, posterior a la fecha mínima permitida y no en el futuro.
- */
 export function isValidBirthDate(
   dateStr: string,
   minYear = 1900
@@ -85,10 +64,6 @@ export function isValidBirthDate(
 
   return { isValid: true };
 }
-
-// ---------------------------------------------------------------------------
-// Validadores específicos para campos de la encuesta
-// ---------------------------------------------------------------------------
 
 export function validateName(value: string): SurveyErrorKey | null {
   if (isEmpty(value)) {
@@ -139,9 +114,6 @@ export function validateEmailField(value: string): SurveyErrorKey | null {
   return null;
 }
 
-/**
- * Valida un campo individual del formulario de encuesta y devuelve el mensaje traducido o undefined.
- */
 export function validateSurveyField(
   fieldName: keyof SurveyFormData,
   value: string,
@@ -175,10 +147,6 @@ export function validateSurveyField(
   return errorKey ? t(errorKey) : undefined;
 }
 
-/**
- * Valida el formulario completo de encuesta y retorna un diccionario con los errores encontrados.
- * Si no hay errores, retorna un objeto vacío `{}`.
- */
 export function validateSurveyForm(
   formData: SurveyFormData,
   t: TranslatorFn

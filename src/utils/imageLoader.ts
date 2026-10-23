@@ -1,9 +1,5 @@
 import type React from "react";
 
-/**
- * Handles image load completion to reveal the image smoothly
- * and stop the shimmer animation on the parent container.
- */
 export function handleImageLoad(e: React.SyntheticEvent<HTMLImageElement>): void {
   const img = e.currentTarget;
   img.classList.add("loaded");

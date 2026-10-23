@@ -1,7 +1,7 @@
 import type { Apod } from "../models/Apod";
 import { API_URL, API_KEY } from "@/config/constants";
 
-export const API_TIMEOUT_MS = 60000; // 60 segundos de espera máxima
+export const API_TIMEOUT_MS = 60000;
 
 export class ApodApiError extends Error {
   status?: number;
@@ -62,7 +62,7 @@ async function parseApiResponse(response: Response): Promise<unknown> {
       const errJson = (await response.json()) as { msg?: string; error?: { message?: string } };
       errorDetail = errJson.msg || errJson.error?.message || "";
     } catch {
-      // Ignorar si el cuerpo devuelto no es JSON (ej. páginas HTML en errores 500 de la NASA)
+      // Ignore non-JSON bodies like NASA HTML error pages on 500
     }
 
     if (response.status === 404) {
@@ -113,18 +113,15 @@ function cleanExplanation(text?: string): string {
   return cleanHtml(clean);
 }
 
-/**
- * Normaliza la respuesta del nuevo endpoint WordPress (science.nasa.gov/wp-json/wp/v2/apod-basic/)
- * para que sea totalmente compatible con los componentes de la aplicación.
- * - hdurl: imagen en alta resolución directa
- * - url: garantizado para <img src={apod.url}> (apunta a la imagen en vez de a la página HTML)
- * - permalink: enlace a la nota oficial en science.nasa.gov
- */
 function ensureHttps(url?: string): string {
   if (!url) return "";
   return url.replace(/^http:\/\//i, "https://");
 }
 
+/**
+ * Normalizes NASA WordPress endpoint responses (science.nasa.gov/wp-json/wp/v2/apod-basic/)
+ * into the internal Apod model, mapping direct asset URLs instead of HTML article pages.
+ */
 export function normalizeApod(raw: any): Apod {
   if (!raw || typeof raw !== "object") {
     throw new ApodApiError("Respuesta de la NASA con formato inválido.");
@@ -152,9 +149,7 @@ export function normalizeApod(raw: any): Apod {
   };
 }
 
-/**
- * Convierte una fecha YYYY-MM-DD al formato YYMMDD requerido por los parámetros de filtro de WordPress
- */
+// WordPress endpoint expects YYMMDD for date_from and date_to
 function toYYMMDD(dateStr: string): string {
   const parts = dateStr.split("-");
   if (parts.length === 3) {
@@ -163,7 +158,6 @@ function toYYMMDD(dateStr: string): string {
   return dateStr;
 }
 
-// Traer apods con un rango de fechas
 export async function getFilteredApodImages(
   year: number = 2024,
   month: number = 12,
@@ -173,7 +167,6 @@ export async function getFilteredApodImages(
   const currentYear = today.getFullYear();
   const currentMonth = today.getMonth() + 1;
 
-  // Evitar consultas a meses futuros
   if (year > currentYear || (year === currentYear && month > currentMonth)) {
     throw new ApodApiError("No se pueden consultar fechas futuras a la actual.", { status: 400 });
   }
@@ -181,11 +174,9 @@ export async function getFilteredApodImages(
   const mm = String(month).padStart(2, "0");
   const start_date = `${year}-${mm}-01`;
 
-  // Calcular el último día del mes (28, 29, 30 o 31)
   const lastDayOfMonth = new Date(year, month, 0).getDate();
   let finalEndDay = lastDayOfMonth;
 
-  // Si es el mes y año en curso, limitar al día de hoy para no pedir fechas futuras
   if (year === currentYear && month === currentMonth) {
     finalEndDay = Math.min(lastDayOfMonth, today.getDate());
   }
@@ -205,7 +196,7 @@ export async function getFilteredApodImages(
   const p1Data = await fetchPage(1);
   let rawList: any[] = Array.isArray(p1Data) ? p1Data : [p1Data];
 
-  // Si la página 1 contiene 25 elementos y el mes tiene más de 25 días, traer la página 2
+  // NASA WordPress endpoint caps at 25 items per page, requiring page 2 for months with more days
   if (rawList.length === 25 && finalEndDay > 25) {
     try {
       const p2Data = await fetchPage(2);
@@ -213,14 +204,13 @@ export async function getFilteredApodImages(
         rawList = [...rawList, ...p2Data];
       }
     } catch {
-      // Si la página 2 no existe o falla, mantenemos los 25 primeros resultados
+      // Fall back to first 25 items if second page fails
     }
   }
 
   return rawList.map(normalizeApod);
 }
 
-// Traer apods aleatorios (máximo 25 según nueva documentación)
 export async function getRandomApodImages(
   count: number = 12,
   signal?: AbortSignal
@@ -229,7 +219,7 @@ export async function getRandomApodImages(
   const baseUrl = getBaseUrl();
   const keyParam = API_KEY ? `&api_key=${API_KEY}` : "";
 
-  // Seleccionar una página aleatoria del archivo para garantizar variedad a lo largo de los años
+  // Sample random page across ~250 historical archive pages
   const randomPage = Math.floor(Math.random() * 250) + 1;
   const url = `${baseUrl}?count=${safeCount}&page=${randomPage}${keyParam}`;
 
@@ -237,12 +227,10 @@ export async function getRandomApodImages(
   const data = await parseApiResponse(response);
   const items = Array.isArray(data) ? data : [data];
 
-  // Barajar y tomar la cantidad deseada
   const shuffled = [...items].sort(() => 0.5 - Math.random()).slice(0, safeCount);
   return shuffled.map(normalizeApod);
 }
 
-// Consultar publicación de una fecha específica (YYYY-MM-DD)
 export async function getApodByDate(
   date: string,
   signal?: AbortSignal
