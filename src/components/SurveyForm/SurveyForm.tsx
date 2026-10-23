@@ -49,7 +49,6 @@ export default function SurveyForm() {
     setErrors({});
   }
 
-  // Manejo de la tecla Escape y bloqueo de scroll para el modal de éxito
   useEffect(() => {
     if (!showModal) return;
 
@@ -108,7 +107,6 @@ export default function SurveyForm() {
         <p className="survey-title">{t("components.survey.title")}</p>
 
         <form className="survey-form" onSubmit={handleSubmit} noValidate>
-          {/* Nombre y Apellido */}
           <div className="name-container">
             <div className="name-input form-group">
               <div className="input-label-error">
@@ -161,7 +159,6 @@ export default function SurveyForm() {
             </div>
           </div>
 
-          {/* Fecha de Nacimiento */}
           <div className="form-group">
             <div className="input-label-error">
               <label htmlFor="fechaNacimiento">
@@ -186,7 +183,6 @@ export default function SurveyForm() {
             />
           </div>
 
-          {/* Sexo (Segmented Radio Pills) */}
           <div className="form-group">
             <div className="input-label-error">
               <label>
@@ -254,7 +250,6 @@ export default function SurveyForm() {
             </div>
           </div>
 
-          {/* Valoración */}
           <div className="form-group">
             <div className="input-label-error">
               <label htmlFor="valoracion">
@@ -293,7 +288,6 @@ export default function SurveyForm() {
             </select>
           </div>
 
-          {/* Email */}
           <div className="form-group">
             <div className="input-label-error">
               <label htmlFor="email">
@@ -319,7 +313,6 @@ export default function SurveyForm() {
             />
           </div>
 
-          {/* Comentario */}
           <div className="form-group">
             <label htmlFor="comentario">{t("components.survey.comment")}</label>
             <textarea
@@ -332,7 +325,6 @@ export default function SurveyForm() {
             ></textarea>
           </div>
 
-          {/* Botones */}
           <div className="form-buttons">
             <button type="submit" disabled={loading}>
               <FaPaperPlane />

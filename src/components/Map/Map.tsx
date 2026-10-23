@@ -20,6 +20,7 @@ function OpenPopup({
   return null;
 }
 
+// Force Leaflet tile recalculation across initial render, animation delay, and container resize
 function InvalidateSizeMap() {
   const map = useMap();
 

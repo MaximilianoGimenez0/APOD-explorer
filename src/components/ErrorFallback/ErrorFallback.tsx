@@ -43,7 +43,6 @@ export const ErrorFallback: React.FC<ErrorFallbackProps> = ({
     }
   };
 
-  // Determine badge text, title, message, and icon based on error type
   const is404 = status === 404;
   const is403 = status === 403 || status === 401;
 
@@ -92,10 +91,8 @@ export const ErrorFallback: React.FC<ErrorFallbackProps> = ({
       aria-live="assertive"
     >
       <div className="error-fallback-card">
-        {/* Ambient glow effect behind icon */}
         <div className="error-glow-halo" aria-hidden="true" />
 
-        {/* Icon representation */}
         <div className="error-icon-container">
           {isTimeout ? (
             <FaClock className="error-icon pulse" />
@@ -108,17 +105,13 @@ export const ErrorFallback: React.FC<ErrorFallbackProps> = ({
           )}
         </div>
 
-        {/* Status Pill */}
         <div className="error-status-pill">{displayBadge}</div>
 
-        {/* Title and Explanation */}
         <h2 className="error-title">{displayTitle}</h2>
         <p className="error-message">{displayMessage}</p>
         <p className="error-hint">{t("components.errorFallback.hint")}</p>
 
-        {/* Call to Actions */}
         <div className="error-actions-group">
-          {/* Primary CTA: Reload Page */}
           <button
             type="button"
             className="error-cta-btn primary-cta"
@@ -129,7 +122,6 @@ export const ErrorFallback: React.FC<ErrorFallbackProps> = ({
             <span>{reloadLabel || t("components.errorFallback.reloadCta")}</span>
           </button>
 
-          {/* Secondary CTA: Retry query without reload if provided */}
           {onRetry && (
             <button
               type="button"

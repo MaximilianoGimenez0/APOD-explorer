@@ -63,7 +63,7 @@ export default function Filters({
     setMonth(selectedMonth);
   };
 
-  // Porcentaje del slider para colorear la barra de progreso activa
+  // Earliest archive year in NASA APOD
   const sliderMin = 1996;
   const sliderProgress = ((year - sliderMin) / (currentYear - sliderMin)) * 100;
 
@@ -74,7 +74,6 @@ export default function Filters({
         <h2>{t("components.filters.title")}</h2>
       </div>
 
-      {/* Tabs de modo: Por Fecha o Aleatorio */}
       <div className="filters-mode-tabs">
         <button
           type="button"
@@ -99,7 +98,6 @@ export default function Filters({
 
       {mode === "date" ? (
         <div className="filters-body">
-          {/* Selector de Año con Stepper y Slider */}
           <div className="filter-group">
             <div className="filter-label-row">
               <span className="filter-label">{t("components.filters.year")}</span>
@@ -146,7 +144,6 @@ export default function Filters({
             </div>
           </div>
 
-          {/* Selector de Mes con Grid 3x4 de Pills */}
           <div className="filter-group">
             <div className="filter-label-row">
               <span className="filter-label">{t("components.filters.month")}</span>
@@ -180,7 +177,6 @@ export default function Filters({
             </div>
           </div>
 
-          {/* Botón de búsqueda */}
           <button
             type="button"
             className="btn-filter btn-search"

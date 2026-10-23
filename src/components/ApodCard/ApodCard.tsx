@@ -46,7 +46,6 @@ export default function ApodCard({ apod }: { apod: Apod }) {
         )}
         <div className="apod-card-overlay"></div>
 
-        {/* Floating Badges */}
         <div className="apod-media-badges">
           <span className="badge-glass date-badge">
             <FaCalendarAlt className="badge-icon" /> {apod.date}
