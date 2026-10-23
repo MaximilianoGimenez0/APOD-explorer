@@ -1,9 +1,14 @@
 import { useContext, useCallback } from 'react';
-import { LanguageContext } from './LanguageProvider';
+import { LanguageContext } from './LanguageContext';
 import type { TranslationKey } from './types';
 
-const getNestedValue = (obj: any, path: string): string | undefined => {
-  return path.split('.').reduce((acc, part) => acc && acc[part], obj);
+const getNestedValue = (obj: unknown, path: string): string | undefined => {
+  return path.split('.').reduce<unknown>((acc, part) => {
+    if (acc && typeof acc === 'object' && part in acc) {
+      return (acc as Record<string, unknown>)[part];
+    }
+    return undefined;
+  }, obj) as string | undefined;
 };
 
 export const useTranslation = () => {

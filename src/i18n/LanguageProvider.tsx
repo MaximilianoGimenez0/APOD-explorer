@@ -1,19 +1,11 @@
-import { createContext, useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import type { ReactNode } from 'react';
 import { getStoredLanguage, setStoredLanguage } from './languageStorage';
 import { es } from './locales/es';
 import { en } from './locales/en';
 import { pt } from './locales/pt';
 import type { Language } from './types';
-import type { TranslationDictionary } from './types';
-
-interface LanguageContextProps {
-  language: Language;
-  setLanguage: (lang: Language) => void;
-  dictionaries: Record<Language, TranslationDictionary>;
-}
-
-export const LanguageContext = createContext<LanguageContextProps | undefined>(undefined);
+import { LanguageContext } from './LanguageContext';
 
 interface LanguageProviderProps {
   children: ReactNode;
