@@ -54,6 +54,10 @@ export default function Home() {
     navigate("/detail", { state: apod });
   };
 
+  const goToDiscover = () => {
+    navigate("/discover");
+  };
+
   if (error) {
     return (
       <div className="main-content">
@@ -112,7 +116,7 @@ export default function Home() {
               <div className="hero-actions">
                 <button
                   className="btn btn-primary"
-                  onClick={() => goToDetail(featured)}
+                  onClick={goToDiscover}
                 >
                   {t('pages.home.exploreButton')} <FaArrowRight />
                 </button>
