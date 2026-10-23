@@ -72,7 +72,6 @@ export default function Home() {
 
   return (
     <div className="main-content">
-      {/* HERO SECTION */}
       <section className="hero-section">
         {loading ? (
           <div className="hero-skeleton">
@@ -127,7 +126,6 @@ export default function Home() {
         )}
       </section>
 
-      {/* DAILY DISCOVERY SECTION */}
       <section className="discovery-section">
         <div className="section-header">
           <h2>{t('pages.home.exploreCosmos')}</h2>

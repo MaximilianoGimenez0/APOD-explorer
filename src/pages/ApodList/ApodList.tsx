@@ -116,13 +116,11 @@ export default function ApodList() {
 
   return (
     <div className="discover-page-wrapper">
-      {/* Cosmic background ambient lighting */}
       <div className="discover-cosmic-glow glow-top-left" aria-hidden="true" />
       <div className="discover-cosmic-glow glow-bottom-right" aria-hidden="true" />
 
       <div className="discover-main">
         <div className="discover-layout">
-          {/* Sidebar de filtros */}
           <aside className={`discover-sidebar ${mobileFiltersOpen ? "open" : ""}`}>
             <Filters
               onRandom={fetchRandomImages}
@@ -134,7 +132,6 @@ export default function ApodList() {
             />
           </aside>
 
-          {/* Contenido principal */}
           <section className="discover-content">
             <div className="discover-header">
               <div className="discover-title-row">
@@ -143,7 +140,6 @@ export default function ApodList() {
                   <p className="discover-subtitle">{t("pages.discover.subtitle")}</p>
                 </div>
 
-                {/* Botón flotante para alternar filtros en móviles */}
                 <button
                   type="button"
                   className="mobile-filter-toggle"
@@ -160,7 +156,6 @@ export default function ApodList() {
                 </button>
               </div>
 
-              {/* Barra de contexto activo y contador */}
               <div className="discover-status-bar">
                 <div className="status-chip-group">
                   {lastQuery.type === "filtered" && lastQuery.month ? (

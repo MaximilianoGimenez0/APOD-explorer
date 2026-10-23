@@ -7,10 +7,6 @@ import Contact from "@/pages/Contact/Contact";
 import Favourites from "@/pages/Favourites/Favourites";
 import History from "@/pages/History/History";
 
-/**
- * AppRouter: Administrador central de rutas de la aplicación.
- * Define la jerarquía de rutas envueltas por MainLayout y la redirección por defecto.
- */
 export default function AppRouter() {
   return (
     <BrowserRouter>
@@ -23,7 +19,6 @@ export default function AppRouter() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/favourites" element={<Favourites />} />
           <Route path="/history" element={<History />} />
-          {/* Ruta comodín de redirección a home */}
           <Route path="*" element={<Navigate to="/home" replace />} />
         </Route>
       </Routes>

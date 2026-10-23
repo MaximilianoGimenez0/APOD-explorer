@@ -40,7 +40,6 @@ export default function ApodDetail() {
   return (
     <div className="detail-page-wrapper">
       <div className="detail-main">
-        {/* Media Hero Section */}
         <section className="detail-media-section">
           {apod.media_type === "image" ? (
             <div className="detail-image-container">
@@ -75,7 +74,6 @@ export default function ApodDetail() {
           )}
         </section>
 
-        {/* Content Section */}
         <section className="detail-content-section">
           <div className="detail-content-inner">
             <header className="detail-header">

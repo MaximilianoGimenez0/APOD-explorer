@@ -13,14 +13,12 @@ export default function Contact() {
   return (
     <div className="about-page">
       <div className="about-main">
-        {/* Presentation Header */}
         <section className="about-header-section">
           <h1>{t('pages.about.title')}</h1>
           <p>{t('pages.about.subtitle')}</p>
         </section>
 
         <div className="about-content-grid">
-          {/* Main Description */}
           <section className="about-card col-span-2">
             <div className="about-card-header">
               <FaSpaceShuttle className="about-icon text-accent" />
@@ -32,7 +30,6 @@ export default function Contact() {
             </p>
           </section>
 
-          {/* Technology Stack */}
           <section className="about-card col-span-1">
             <div className="about-card-header">
               <FaCode className="about-icon text-accent-secondary" />
@@ -57,7 +54,6 @@ export default function Contact() {
             </div>
           </section>
 
-          {/* Features */}
           <section className="about-card col-span-3">
             <div className="about-card-header">
               <FaStar className="about-icon text-accent" />
@@ -88,7 +84,6 @@ export default function Contact() {
             </div>
           </section>
 
-          {/* Location / Map */}
           <section className="about-card col-span-2">
             <div className="about-card-header">
               <FaMapMarkerAlt className="about-icon text-accent-tertiary" />
@@ -104,7 +99,6 @@ export default function Contact() {
             </div>
           </section>
 
-          {/* Survey Form */}
           <section className="about-card col-span-1">
             <div className="about-card-header">
               <h2>{t('pages.about.survey.title')}</h2>
